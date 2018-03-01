@@ -1,3 +1,4 @@
+
 // EFM8_autotest.c: Test the EFM8 board for short circuits and open circuits.
 // The board's pins must be connected in pairs as follows:
 //

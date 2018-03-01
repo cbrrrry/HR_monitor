@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by C51
 ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-; This file was generated Wed Feb 28 17:29:55 2018
+; This file was generated Wed Feb 28 20:27:42 2018
 ;--------------------------------------------------------
 $name hr_monitor
 $optc51 --model-small
@@ -27,6 +27,7 @@ $printf_float
 	public _main
 	public _TIMER0_Init
 	public _getsn
+	public _LCDprint_inv
 	public _LCDprint
 	public _LCD_4BIT
 	public _WriteCommand
@@ -36,8 +37,10 @@ $printf_float
 	public _waitms
 	public _Timer3us
 	public __c51_external_startup
+	public _LCDprint_inv_PARM_3
 	public _LCDprint_PARM_3
 	public _getsn_PARM_2
+	public _LCDprint_inv_PARM_2
 	public _LCDprint_PARM_2
 	public _overflow_count
 ;--------------------------------------------------------
@@ -492,12 +495,26 @@ _overflow_count:
 	ds 1
 _LCDprint_PARM_2:
 	ds 1
+_LCDprint_inv_PARM_2:
+	ds 1
+_LCDprint_inv_length_1_43:
+	ds 2
 _getsn_PARM_2:
 	ds 2
-_getsn_buff_1_42:
+_getsn_buff_1_44:
 	ds 3
 _getsn_sloc0_1_0:
 	ds 2
+_main_period_1_52:
+	ds 4
+_main_mem_1_52:
+	ds 4
+_main_unstable_1_52:
+	ds 2
+_main_count_1_52:
+	ds 2
+_main_bpm_string_1_52:
+	ds 3
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
 ;--------------------------------------------------------
@@ -515,6 +532,8 @@ _getsn_sloc0_1_0:
 ;--------------------------------------------------------
 	rseg R_BSEG
 _LCDprint_PARM_3:
+	DBIT	1
+_LCDprint_inv_PARM_3:
 	DBIT	1
 ;--------------------------------------------------------
 ; paged external ram data
@@ -559,69 +578,69 @@ _LCDprint_PARM_3:
 ;Allocation info for local variables in function '_c51_external_startup'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:30: char _c51_external_startup (void)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:31: char _c51_external_startup (void)
 ;	-----------------------------------------
 ;	 function _c51_external_startup
 ;	-----------------------------------------
 __c51_external_startup:
 	using	0
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:33: SFRPAGE = 0x00;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:34: SFRPAGE = 0x00;
 	mov	_SFRPAGE,#0x00
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:34: WDTCN = 0xDE; //First key
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:35: WDTCN = 0xDE; //First key
 	mov	_WDTCN,#0xDE
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:35: WDTCN = 0xAD; //Second key
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:36: WDTCN = 0xAD; //Second key
 	mov	_WDTCN,#0xAD
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:37: VDM0CN |= 0x80;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:38: VDM0CN |= 0x80;
 	orl	_VDM0CN,#0x80
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:38: RSTSRC = 0x02;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:39: RSTSRC = 0x02;
 	mov	_RSTSRC,#0x02
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:45: SFRPAGE = 0x10;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:46: SFRPAGE = 0x10;
 	mov	_SFRPAGE,#0x10
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:46: PFE0CN  = 0x20; // SYSCLK < 75 MHz.
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:47: PFE0CN  = 0x20; // SYSCLK < 75 MHz.
 	mov	_PFE0CN,#0x20
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:47: SFRPAGE = 0x00;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:48: SFRPAGE = 0x00;
 	mov	_SFRPAGE,#0x00
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:68: CLKSEL = 0x00;
-	mov	_CLKSEL,#0x00
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:69: CLKSEL = 0x00;
 	mov	_CLKSEL,#0x00
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:70: while ((CLKSEL & 0x80) == 0);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:70: CLKSEL = 0x00;
+	mov	_CLKSEL,#0x00
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:71: while ((CLKSEL & 0x80) == 0);
 L002001?:
 	mov	a,_CLKSEL
 	jnb	acc.7,L002001?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:71: CLKSEL = 0x03;
-	mov	_CLKSEL,#0x03
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:72: CLKSEL = 0x03;
 	mov	_CLKSEL,#0x03
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:73: while ((CLKSEL & 0x80) == 0);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:73: CLKSEL = 0x03;
+	mov	_CLKSEL,#0x03
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:74: while ((CLKSEL & 0x80) == 0);
 L002004?:
 	mov	a,_CLKSEL
 	jnb	acc.7,L002004?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:78: P0MDOUT |= 0x10; // Enable UART0 TX as push-pull output
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:79: P0MDOUT |= 0x10; // Enable UART0 TX as push-pull output
 	orl	_P0MDOUT,#0x10
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:79: XBR0     = 0x01; // Enable UART0 on P0.4(TX) and P0.5(RX)                     
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:80: XBR0     = 0x01; // Enable UART0 on P0.4(TX) and P0.5(RX)                     
 	mov	_XBR0,#0x01
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:80: XBR1     = 0X00;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:81: XBR1     = 0X00;
 	mov	_XBR1,#0x00
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:81: XBR2     = 0x40; // Enable crossbar and weak pull-ups
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:82: XBR2     = 0x40; // Enable crossbar and weak pull-ups
 	mov	_XBR2,#0x40
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:87: SCON0 = 0x10;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:88: SCON0 = 0x10;
 	mov	_SCON0,#0x10
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:88: CKCON0 |= 0b_0000_0000 ; // Timer 1 uses the system clock divided by 12.
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:89: CKCON0 |= 0b_0000_0000 ; // Timer 1 uses the system clock divided by 12.
 	mov	_CKCON0,_CKCON0
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:89: TH1 = 0x100-((SYSCLK/BAUDRATE)/(2L*12L));
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:90: TH1 = 0x100-((SYSCLK/BAUDRATE)/(2L*12L));
 	mov	_TH1,#0xE6
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:90: TL1 = TH1;      // Init Timer1
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:91: TL1 = TH1;      // Init Timer1
 	mov	_TL1,_TH1
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:91: TMOD &= ~0xf0;  // TMOD: timer 1 in 8-bit auto-reload
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:92: TMOD &= ~0xf0;  // TMOD: timer 1 in 8-bit auto-reload
 	anl	_TMOD,#0x0F
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:92: TMOD |=  0x20;                       
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:93: TMOD |=  0x20;                       
 	orl	_TMOD,#0x20
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:93: TR1 = 1; // START Timer1
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:94: TR1 = 1; // START Timer1
 	setb	_TR1
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:94: TI = 1;  // Indicate TX0 ready
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:95: TI = 1;  // Indicate TX0 ready
 	setb	_TI
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:96: return 0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:97: return 0;
 	mov	dpl,#0x00
 	ret
 ;------------------------------------------------------------
@@ -630,40 +649,40 @@ L002004?:
 ;us                        Allocated to registers r2 
 ;i                         Allocated to registers r3 
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:102: void Timer3us(unsigned char us)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:103: void Timer3us(unsigned char us)
 ;	-----------------------------------------
 ;	 function Timer3us
 ;	-----------------------------------------
 _Timer3us:
 	mov	r2,dpl
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:107: CKCON0|=0b_0100_0000;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:108: CKCON0|=0b_0100_0000;
 	orl	_CKCON0,#0x40
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:109: TMR3RL = (-(SYSCLK)/1000000L); // Set Timer3 to overflow in 1us.
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:110: TMR3RL = (-(SYSCLK)/1000000L); // Set Timer3 to overflow in 1us.
 	mov	_TMR3RL,#0xB8
 	mov	(_TMR3RL >> 8),#0xFF
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:110: TMR3 = TMR3RL;                 // Initialize Timer3 for first overflow
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:111: TMR3 = TMR3RL;                 // Initialize Timer3 for first overflow
 	mov	_TMR3,_TMR3RL
 	mov	(_TMR3 >> 8),(_TMR3RL >> 8)
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:112: TMR3CN0 = 0x04;                 // Sart Timer3 and clear overflow flag
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:113: TMR3CN0 = 0x04;                 // Sart Timer3 and clear overflow flag
 	mov	_TMR3CN0,#0x04
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:113: for (i = 0; i < us; i++)       // Count <us> overflows
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:114: for (i = 0; i < us; i++)       // Count <us> overflows
 	mov	r3,#0x00
 L003004?:
 	clr	c
 	mov	a,r3
 	subb	a,r2
 	jnc	L003007?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:115: while (!(TMR3CN0 & 0x80));  // Wait for overflow
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:116: while (!(TMR3CN0 & 0x80));  // Wait for overflow
 L003001?:
 	mov	a,_TMR3CN0
 	jnb	acc.7,L003001?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:116: TMR3CN0 &= ~(0x80);         // Clear overflow indicator
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:117: TMR3CN0 &= ~(0x80);         // Clear overflow indicator
 	anl	_TMR3CN0,#0x7F
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:113: for (i = 0; i < us; i++)       // Count <us> overflows
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:114: for (i = 0; i < us; i++)       // Count <us> overflows
 	inc	r3
 	sjmp	L003004?
 L003007?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:118: TMR3CN0 = 0 ;                   // Stop Timer3 and clear overflow flag
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:119: TMR3CN0 = 0 ;                   // Stop Timer3 and clear overflow flag
 	mov	_TMR3CN0,#0x00
 	ret
 ;------------------------------------------------------------
@@ -673,14 +692,14 @@ L003007?:
 ;j                         Allocated to registers r4 r5 
 ;k                         Allocated to registers r6 
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:121: void waitms (unsigned int ms)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:122: void waitms (unsigned int ms)
 ;	-----------------------------------------
 ;	 function waitms
 ;	-----------------------------------------
 _waitms:
 	mov	r2,dpl
 	mov	r3,dph
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:125: for(j=0; j<ms; j++)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:126: for(j=0; j<ms; j++)
 	mov	r4,#0x00
 	mov	r5,#0x00
 L004005?:
@@ -690,7 +709,7 @@ L004005?:
 	mov	a,r5
 	subb	a,r3
 	jnc	L004009?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:126: for (k=0; k<4; k++) Timer3us(250);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:127: for (k=0; k<4; k++) Timer3us(250);
 	mov	r6,#0x00
 L004001?:
 	cjne	r6,#0x04,L004018?
@@ -711,7 +730,7 @@ L004018?:
 	inc	r6
 	sjmp	L004001?
 L004007?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:125: for(j=0; j<ms; j++)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:126: for(j=0; j<ms; j++)
 	inc	r4
 	cjne	r4,#0x00,L004005?
 	inc	r5
@@ -722,17 +741,17 @@ L004009?:
 ;Allocation info for local variables in function 'LCD_pulse'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:129: void LCD_pulse (void)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:130: void LCD_pulse (void)
 ;	-----------------------------------------
 ;	 function LCD_pulse
 ;	-----------------------------------------
 _LCD_pulse:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:131: LCD_E=1;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:132: LCD_E=1;
 	setb	_P2_5
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:132: Timer3us(40);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:133: Timer3us(40);
 	mov	dpl,#0x28
 	lcall	_Timer3us
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:133: LCD_E=0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:134: LCD_E=0;
 	clr	_P2_5
 	ret
 ;------------------------------------------------------------
@@ -740,66 +759,66 @@ _LCD_pulse:
 ;------------------------------------------------------------
 ;x                         Allocated to registers r2 
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:136: void LCD_byte (unsigned char x)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:137: void LCD_byte (unsigned char x)
 ;	-----------------------------------------
 ;	 function LCD_byte
 ;	-----------------------------------------
 _LCD_byte:
 	mov	r2,dpl
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:139: ACC=x; //Send high nible
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:140: ACC=x; //Send high nible
 	mov	_ACC,r2
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:140: LCD_D7=ACC_7;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:141: LCD_D7=ACC_7;
 	mov	c,_ACC_7
 	mov	_P2_1,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:141: LCD_D6=ACC_6;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:142: LCD_D6=ACC_6;
 	mov	c,_ACC_6
 	mov	_P2_2,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:142: LCD_D5=ACC_5;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:143: LCD_D5=ACC_5;
 	mov	c,_ACC_5
 	mov	_P2_3,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:143: LCD_D4=ACC_4;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:144: LCD_D4=ACC_4;
 	mov	c,_ACC_4
 	mov	_P2_4,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:144: LCD_pulse();
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:145: LCD_pulse();
 	push	ar2
 	lcall	_LCD_pulse
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:145: Timer3us(40);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:146: Timer3us(40);
 	mov	dpl,#0x28
 	lcall	_Timer3us
 	pop	ar2
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:146: ACC=x; //Send low nible
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:147: ACC=x; //Send low nible
 	mov	_ACC,r2
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:147: LCD_D7=ACC_3;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:148: LCD_D7=ACC_3;
 	mov	c,_ACC_3
 	mov	_P2_1,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:148: LCD_D6=ACC_2;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:149: LCD_D6=ACC_2;
 	mov	c,_ACC_2
 	mov	_P2_2,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:149: LCD_D5=ACC_1;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:150: LCD_D5=ACC_1;
 	mov	c,_ACC_1
 	mov	_P2_3,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:150: LCD_D4=ACC_0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:151: LCD_D4=ACC_0;
 	mov	c,_ACC_0
 	mov	_P2_4,c
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:151: LCD_pulse();
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:152: LCD_pulse();
 	ljmp	_LCD_pulse
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'WriteData'
 ;------------------------------------------------------------
 ;x                         Allocated to registers r2 
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:154: void WriteData (unsigned char x)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:155: void WriteData (unsigned char x)
 ;	-----------------------------------------
 ;	 function WriteData
 ;	-----------------------------------------
 _WriteData:
 	mov	r2,dpl
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:156: LCD_RS=1;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:157: LCD_RS=1;
 	setb	_P2_6
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:157: LCD_byte(x);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:158: LCD_byte(x);
 	mov	dpl,r2
 	lcall	_LCD_byte
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:158: waitms(2);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:159: waitms(2);
 	mov	dptr,#0x0002
 	ljmp	_waitms
 ;------------------------------------------------------------
@@ -807,53 +826,53 @@ _WriteData:
 ;------------------------------------------------------------
 ;x                         Allocated to registers r2 
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:161: void WriteCommand (unsigned char x)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:162: void WriteCommand (unsigned char x)
 ;	-----------------------------------------
 ;	 function WriteCommand
 ;	-----------------------------------------
 _WriteCommand:
 	mov	r2,dpl
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:163: LCD_RS=0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:164: LCD_RS=0;
 	clr	_P2_6
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:164: LCD_byte(x);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:165: LCD_byte(x);
 	mov	dpl,r2
 	lcall	_LCD_byte
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:165: waitms(5);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:166: waitms(5);
 	mov	dptr,#0x0005
 	ljmp	_waitms
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'LCD_4BIT'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:168: void LCD_4BIT (void)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:169: void LCD_4BIT (void)
 ;	-----------------------------------------
 ;	 function LCD_4BIT
 ;	-----------------------------------------
 _LCD_4BIT:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:170: LCD_E=0; // Resting state of LCD's enable is zero
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:171: LCD_E=0; // Resting state of LCD's enable is zero
 	clr	_P2_5
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:172: waitms(20);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:173: waitms(20);
 	mov	dptr,#0x0014
 	lcall	_waitms
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:174: WriteCommand(0x33);
-	mov	dpl,#0x33
-	lcall	_WriteCommand
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:175: WriteCommand(0x33);
 	mov	dpl,#0x33
 	lcall	_WriteCommand
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:176: WriteCommand(0x32); // Change to 4-bit mode
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:176: WriteCommand(0x33);
+	mov	dpl,#0x33
+	lcall	_WriteCommand
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:177: WriteCommand(0x32); // Change to 4-bit mode
 	mov	dpl,#0x32
 	lcall	_WriteCommand
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:179: WriteCommand(0x28);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:180: WriteCommand(0x28);
 	mov	dpl,#0x28
 	lcall	_WriteCommand
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:180: WriteCommand(0x0c);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:181: WriteCommand(0x0c);
 	mov	dpl,#0x0C
 	lcall	_WriteCommand
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:181: WriteCommand(0x01); // Clear screen command (takes some time)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:182: WriteCommand(0x01); // Clear screen command (takes some time)
 	mov	dpl,#0x01
 	lcall	_WriteCommand
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:182: waitms(20); // Wait for clear screen command to finsih.
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:183: waitms(20); // Wait for clear screen command to finsih.
 	mov	dptr,#0x0014
 	ljmp	_waitms
 ;------------------------------------------------------------
@@ -863,7 +882,7 @@ _LCD_4BIT:
 ;string                    Allocated to registers r2 r3 r4 
 ;j                         Allocated to registers r5 r6 
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:185: void LCDprint(char * string, unsigned char line, bit clear)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:186: void LCDprint(char * string, unsigned char line, bit clear)
 ;	-----------------------------------------
 ;	 function LCDprint
 ;	-----------------------------------------
@@ -871,7 +890,7 @@ _LCDprint:
 	mov	r2,dpl
 	mov	r3,dph
 	mov	r4,b
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:189: WriteCommand(line==2?0xc0:0x80);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:190: WriteCommand(line==2?0xc0:0x80);
 	mov	a,#0x02
 	cjne	a,_LCDprint_PARM_2,L010013?
 	mov	r5,#0xC0
@@ -884,13 +903,13 @@ L010014?:
 	push	ar3
 	push	ar4
 	lcall	_WriteCommand
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:190: waitms(5);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:191: waitms(5);
 	mov	dptr,#0x0005
 	lcall	_waitms
 	pop	ar4
 	pop	ar3
 	pop	ar2
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:191: for(j=0; string[j]!=0; j++)	WriteData(string[j]);// Write the message
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:192: for(j=0; string[j]!=0; j++)	WriteData(string[j]);// Write the message
 	mov	r5,#0x00
 	mov	r6,#0x00
 L010003?:
@@ -924,7 +943,7 @@ L010003?:
 	inc	r6
 	sjmp	L010003?
 L010006?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:192: if(clear) for(; j<CHARS_PER_LINE; j++) WriteData(' '); // Clear the rest of the line
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:193: if(clear) for(; j<CHARS_PER_LINE; j++) WriteData(' '); // Clear the rest of the line
 	jnb	_LCDprint_PARM_3,L010011?
 	mov	ar2,r5
 	mov	ar3,r6
@@ -949,23 +968,151 @@ L010007?:
 L010011?:
 	ret
 ;------------------------------------------------------------
+;Allocation info for local variables in function 'LCDprint_inv'
+;------------------------------------------------------------
+;line                      Allocated with name '_LCDprint_inv_PARM_2'
+;string                    Allocated to registers r2 r3 r4 
+;j                         Allocated to registers r5 r6 
+;length                    Allocated with name '_LCDprint_inv_length_1_43'
+;------------------------------------------------------------
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:196: void LCDprint_inv(char * string, unsigned char line, bit clear)
+;	-----------------------------------------
+;	 function LCDprint_inv
+;	-----------------------------------------
+_LCDprint_inv:
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:201: WriteCommand(line==2?0xc0:0x80);
+	mov	a,#0x02
+	cjne	a,_LCDprint_inv_PARM_2,L011017?
+	mov	r5,#0xC0
+	sjmp	L011018?
+L011017?:
+	mov	r5,#0x80
+L011018?:
+	mov	dpl,r5
+	push	ar2
+	push	ar3
+	push	ar4
+	lcall	_WriteCommand
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:202: waitms(5);
+	mov	dptr,#0x0005
+	lcall	_waitms
+	pop	ar4
+	pop	ar3
+	pop	ar2
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:203: for(j=0; string[j]!=0; j++)	length++;
+	clr	a
+	mov	_LCDprint_inv_length_1_43,a
+	mov	(_LCDprint_inv_length_1_43 + 1),a
+	mov	r7,a
+	mov	r0,a
+L011003?:
+	mov	a,r7
+	add	a,r2
+	mov	r1,a
+	mov	a,r0
+	addc	a,r3
+	mov	r5,a
+	mov	ar6,r4
+	mov	dpl,r1
+	mov	dph,r5
+	mov	b,r6
+	lcall	__gptrget
+	mov	r1,a
+	jz	L011006?
+	inc	_LCDprint_inv_length_1_43
+	clr	a
+	cjne	a,_LCDprint_inv_length_1_43,L011032?
+	inc	(_LCDprint_inv_length_1_43 + 1)
+L011032?:
+	inc	r7
+	cjne	r7,#0x00,L011003?
+	inc	r0
+	sjmp	L011003?
+L011006?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:204: for(j=length-1; j>=0; j--) WriteData(string[j]);// Write the message
+	mov	a,_LCDprint_inv_length_1_43
+	add	a,#0xff
+	mov	r5,a
+	mov	a,(_LCDprint_inv_length_1_43 + 1)
+	addc	a,#0xff
+	mov	r6,a
+L011007?:
+	mov	a,r6
+	jb	acc.7,L011010?
+	mov	a,r5
+	add	a,r2
+	mov	r7,a
+	mov	a,r6
+	addc	a,r3
+	mov	r0,a
+	mov	ar1,r4
+	mov	dpl,r7
+	mov	dph,r0
+	mov	b,r1
+	lcall	__gptrget
+	mov	dpl,a
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
+	push	ar6
+	lcall	_WriteData
+	pop	ar6
+	pop	ar5
+	pop	ar4
+	pop	ar3
+	pop	ar2
+	dec	r5
+	cjne	r5,#0xff,L011035?
+	dec	r6
+L011035?:
+	sjmp	L011007?
+L011010?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:205: if(clear) for(; j<CHARS_PER_LINE; j++) WriteData(' '); // Clear the rest of the line
+	jnb	_LCDprint_inv_PARM_3,L011015?
+	mov	ar2,r5
+	mov	ar3,r6
+L011011?:
+	clr	c
+	mov	a,r2
+	subb	a,#0x10
+	mov	a,r3
+	xrl	a,#0x80
+	subb	a,#0x80
+	jnc	L011015?
+	mov	dpl,#0x20
+	push	ar2
+	push	ar3
+	lcall	_WriteData
+	pop	ar3
+	pop	ar2
+	inc	r2
+	cjne	r2,#0x00,L011011?
+	inc	r3
+	sjmp	L011011?
+L011015?:
+	ret
+;------------------------------------------------------------
 ;Allocation info for local variables in function 'getsn'
 ;------------------------------------------------------------
 ;len                       Allocated with name '_getsn_PARM_2'
-;buff                      Allocated with name '_getsn_buff_1_42'
+;buff                      Allocated with name '_getsn_buff_1_44'
 ;j                         Allocated with name '_getsn_sloc0_1_0'
 ;c                         Allocated to registers r3 
 ;sloc0                     Allocated with name '_getsn_sloc0_1_0'
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:195: int getsn (char * buff, int len)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:209: int getsn (char * buff, int len)
 ;	-----------------------------------------
 ;	 function getsn
 ;	-----------------------------------------
 _getsn:
-	mov	_getsn_buff_1_42,dpl
-	mov	(_getsn_buff_1_42 + 1),dph
-	mov	(_getsn_buff_1_42 + 2),b
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:200: for(j=0; j<(len-1); j++)
+	mov	_getsn_buff_1_44,dpl
+	mov	(_getsn_buff_1_44 + 1),dph
+	mov	(_getsn_buff_1_44 + 2),b
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:214: for(j=0; j<(len-1); j++)
 	clr	a
 	mov	_getsn_sloc0_1_0,a
 	mov	(_getsn_sloc0_1_0 + 1),a
@@ -977,7 +1124,7 @@ _getsn:
 	mov	r0,a
 	mov	r1,#0x00
 	mov	r2,#0x00
-L011005?:
+L012005?:
 	clr	c
 	mov	a,r1
 	subb	a,r7
@@ -986,8 +1133,8 @@ L011005?:
 	mov	b,r0
 	xrl	b,#0x80
 	subb	a,b
-	jnc	L011008?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:202: c=getchar();
+	jnc	L012008?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:216: c=getchar();
 	push	ar2
 	push	ar7
 	push	ar0
@@ -998,66 +1145,66 @@ L011005?:
 	pop	ar0
 	pop	ar7
 	pop	ar2
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:203: if ( (c=='\n') || (c=='\r') )
-	cjne	r3,#0x0A,L011015?
-	sjmp	L011001?
-L011015?:
-	cjne	r3,#0x0D,L011002?
-L011001?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:205: buff[j]=0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:217: if ( (c=='\n') || (c=='\r') )
+	cjne	r3,#0x0A,L012015?
+	sjmp	L012001?
+L012015?:
+	cjne	r3,#0x0D,L012002?
+L012001?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:219: buff[j]=0;
 	mov	a,_getsn_sloc0_1_0
-	add	a,_getsn_buff_1_42
+	add	a,_getsn_buff_1_44
 	mov	r4,a
 	mov	a,(_getsn_sloc0_1_0 + 1)
-	addc	a,(_getsn_buff_1_42 + 1)
+	addc	a,(_getsn_buff_1_44 + 1)
 	mov	r5,a
-	mov	r6,(_getsn_buff_1_42 + 2)
+	mov	r6,(_getsn_buff_1_44 + 2)
 	mov	dpl,r4
 	mov	dph,r5
 	mov	b,r6
 	clr	a
 	lcall	__gptrput
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:206: return j;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:220: return j;
 	mov	dpl,_getsn_sloc0_1_0
 	mov	dph,(_getsn_sloc0_1_0 + 1)
 	ret
-L011002?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:210: buff[j]=c;
+L012002?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:224: buff[j]=c;
 	mov	a,r1
-	add	a,_getsn_buff_1_42
+	add	a,_getsn_buff_1_44
 	mov	r4,a
 	mov	a,r2
-	addc	a,(_getsn_buff_1_42 + 1)
+	addc	a,(_getsn_buff_1_44 + 1)
 	mov	r5,a
-	mov	r6,(_getsn_buff_1_42 + 2)
+	mov	r6,(_getsn_buff_1_44 + 2)
 	mov	dpl,r4
 	mov	dph,r5
 	mov	b,r6
 	mov	a,r3
 	lcall	__gptrput
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:200: for(j=0; j<(len-1); j++)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:214: for(j=0; j<(len-1); j++)
 	inc	r1
-	cjne	r1,#0x00,L011018?
+	cjne	r1,#0x00,L012018?
 	inc	r2
-L011018?:
+L012018?:
 	mov	_getsn_sloc0_1_0,r1
 	mov	(_getsn_sloc0_1_0 + 1),r2
-	sjmp	L011005?
-L011008?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:213: buff[j]=0;
+	sjmp	L012005?
+L012008?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:227: buff[j]=0;
 	mov	a,_getsn_sloc0_1_0
-	add	a,_getsn_buff_1_42
+	add	a,_getsn_buff_1_44
 	mov	r2,a
 	mov	a,(_getsn_sloc0_1_0 + 1)
-	addc	a,(_getsn_buff_1_42 + 1)
+	addc	a,(_getsn_buff_1_44 + 1)
 	mov	r3,a
-	mov	r4,(_getsn_buff_1_42 + 2)
+	mov	r4,(_getsn_buff_1_44 + 2)
 	mov	dpl,r2
 	mov	dph,r3
 	mov	b,r4
 	clr	a
 	lcall	__gptrput
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:214: return len;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:228: return len;
 	mov	dpl,_getsn_PARM_2
 	mov	dph,(_getsn_PARM_2 + 1)
 	ret
@@ -1065,48 +1212,67 @@ L011008?:
 ;Allocation info for local variables in function 'TIMER0_Init'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:217: void TIMER0_Init(void)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:231: void TIMER0_Init(void)
 ;	-----------------------------------------
 ;	 function TIMER0_Init
 ;	-----------------------------------------
 _TIMER0_Init:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:219: TMOD&=0b_1111_0000; // Set the bits of Timer/Counter 0 to zero
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:233: TMOD&=0b_1111_0000; // Set the bits of Timer/Counter 0 to zero
 	anl	_TMOD,#0xF0
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:220: TMOD|=0b_0000_0001; // Timer/Counter 0 used as a 16-bit timer
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:234: TMOD|=0b_0000_0001; // Timer/Counter 0 used as a 16-bit timer
 	orl	_TMOD,#0x01
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:221: TR0=0; // Stop Timer/Counter 0
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:235: TR0=0; // Stop Timer/Counter 0
 	clr	_TR0
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;period                    Allocated to registers r2 r3 r4 r5 
+;period                    Allocated with name '_main_period_1_52'
+;bpm                       Allocated to registers r6 r7 r0 r1 
+;mem                       Allocated with name '_main_mem_1_52'
+;unstable                  Allocated with name '_main_unstable_1_52'
+;bpm_int                   Allocated to registers r2 r3 
+;count                     Allocated with name '_main_count_1_52'
+;bpm_string                Allocated with name '_main_bpm_string_1_52'
 ;------------------------------------------------------------
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:224: void main (void) 
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:238: void main (void) 
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:231: TIMER0_Init();
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:244: float mem=0.0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:245: int unstable=0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:249: char * bpm_string=NULL;
+	clr	a
+	mov	_main_mem_1_52,a
+	mov	(_main_mem_1_52 + 1),a
+	mov	(_main_mem_1_52 + 2),a
+	mov (_main_mem_1_52 + 3),a
+	mov _main_unstable_1_52,a
+	mov (_main_unstable_1_52 + 1),a
+	mov _main_bpm_string_1_52,a
+	mov (_main_bpm_string_1_52 + 1),a
+	mov (_main_bpm_string_1_52 + 2),a
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:252: TIMER0_Init();
 	lcall	_TIMER0_Init
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:234: LCD_4BIT();
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:255: LCD_4BIT();
 	lcall	_LCD_4BIT
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:238: LCDprint("Place clip on   ", 1, 1);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:259: LCDprint("Place clip on   ", 1, 1);
 	mov	_LCDprint_PARM_2,#0x01
 	setb	_LCDprint_PARM_3
 	mov	dptr,#__str_0
 	mov	b,#0x80
 	lcall	_LCDprint
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:239: LCDprint("Ring fingernail", 2, 1);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:260: LCDprint("Ring fingernail", 2, 1);
 	mov	_LCDprint_PARM_2,#0x02
 	setb	_LCDprint_PARM_3
 	mov	dptr,#__str_1
 	mov	b,#0x80
 	lcall	_LCDprint
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:242: waitms(1000);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:263: waitms(1000);
 	mov	dptr,#0x03E8
 	lcall	_waitms
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:244: printf("\x1b[2J"); // Clear screen using ANSI escape sequence.
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:265: printf("\x1b[2J"); // Clear screen using ANSI escape sequence.
 	mov	a,#__str_2
 	push	acc
 	mov	a,#(__str_2 >> 8)
@@ -1117,8 +1283,8 @@ _main:
 	dec	sp
 	dec	sp
 	dec	sp
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:249: __FILE__, __DATE__, __TIME__);
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:248: "Compiled: %s, %s\n\n",
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:270: __FILE__, __DATE__, __TIME__);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:269: "Compiled: %s, %s\n\n",
 	mov	a,#__str_6
 	push	acc
 	mov	a,#(__str_6 >> 8)
@@ -1147,59 +1313,60 @@ _main:
 	mov	a,sp
 	add	a,#0xf4
 	mov	sp,a
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:252: while (1)
-L013018?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:255: TL0=0; 
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:273: while (1)
+L014033?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:276: TL0=0; 
 	mov	_TL0,#0x00
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:256: TH0=0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:277: TH0=0;
 	mov	_TH0,#0x00
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:257: TF0=0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:278: TF0=0;
 	clr	_TF0
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:258: overflow_count=0;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:279: overflow_count=0;
 	mov	_overflow_count,#0x00
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:260: while(input!=0); // Wait for the signal to be zero
-L013001?:
-	jb	_P2_0,L013001?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:261: while(input!=1); // Wait for the signal to be one
-L013004?:
-	jnb	_P2_0,L013004?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:262: TR0=1; // Start the timer
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:282: while(input!=0); // Wait for the signal to be zero
+L014001?:
+	jb	_P2_0,L014001?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:283: while(input!=1); // Wait for the signal to be one
+L014004?:
+	jnb	_P2_0,L014004?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:285: TR0=1; // Start the timer
 	setb	_TR0
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:263: while(input!=0) // Wait for the signal to be zero
-L013009?:
-	jnb	_P2_0,L013014?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:265: if(TF0==1) // Did the 16-bit timer overflow?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:267: TF0=0;
-	jbc	_TF0,L013035?
-	sjmp	L013009?
-L013035?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:268: overflow_count++;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:286: while(input!=0) // Wait for the signal to be zero
+L014009?:
+	jnb	_P2_0,L014014?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:288: if(TF0==1) // Did the 16-bit timer overflow?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:290: TF0=0;
+	jbc	_TF0,L014059?
+	sjmp	L014009?
+L014059?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:291: overflow_count++;
 	inc	_overflow_count
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:271: while(input!=1) // Wait for the signal to be one
-	sjmp	L013009?
-L013014?:
-	jb	_P2_0,L013016?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:273: if(input==1) // Did the 16-bit timer overflow?
-	jnb	_P2_0,L013014?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:275: TF0=0;
-	clr	_TF0
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:276: overflow_count++;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:294: while(input!=1) // Wait for the signal to be one
+	sjmp	L014009?
+L014014?:
+	jb	_P2_0,L014016?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:296: if(TF0==1) // Did the 16-bit timer overflow?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:298: TF0=0;
+	jbc	_TF0,L014061?
+	sjmp	L014014?
+L014061?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:299: overflow_count++;
 	inc	_overflow_count
-	sjmp	L013014?
-L013016?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:279: TR0=0; // Stop timer 0, the 24-bit number [overflow_count-TH0-TL0] has the period!
+	sjmp	L014014?
+L014016?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:302: TR0=0; // Stop timer 0, the 24-bit number [overflow_count-TH0-TL0] has the period!
 	clr	_TR0
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:280: period=(overflow_count*65536.0+TH0*256.0+TL0)*(12.0/SYSCLK);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:303: period=(overflow_count*65536.0+TH0*256.0+TL0)*(12.0/SYSCLK);
 	mov	dpl,_overflow_count
 	lcall	___uchar2fs
-	mov	r2,dpl
-	mov	r3,dph
-	mov	r4,b
-	mov	r5,a
+	mov	r7,dpl
+	mov	r2,dph
+	mov	r3,b
+	mov	r4,a
+	push	ar7
 	push	ar2
 	push	ar3
 	push	ar4
-	push	ar5
 	mov	dptr,#0x0000
 	mov	b,#0x80
 	mov	a,#0x47
@@ -1217,12 +1384,12 @@ L013016?:
 	push	ar4
 	push	ar5
 	lcall	___uchar2fs
-	mov	r6,dpl
-	mov	r7,dph
+	mov	r7,dpl
+	mov	r6,dph
 	mov	r0,b
 	mov	r1,a
-	push	ar6
 	push	ar7
+	push	ar6
 	push	ar0
 	push	ar1
 	mov	dptr,#0x0000
@@ -1297,33 +1464,33 @@ L013016?:
 	mov	b,#0x32
 	mov	a,#0x34
 	lcall	___fsmul
-	mov	r2,dpl
-	mov	r3,dph
-	mov	r4,b
-	mov	r5,a
+	mov	_main_period_1_52,dpl
+	mov	(_main_period_1_52 + 1),dph
+	mov	(_main_period_1_52 + 2),b
+	mov	(_main_period_1_52 + 3),a
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:282: printf( "\rT=%f ms    ", period*1000.0);
-	push	ar2
-	push	ar3
-	push	ar4
-	push	ar5
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:305: printf( "\rT=%f ms    ", period*1000.0);
+	push	_main_period_1_52
+	push	(_main_period_1_52 + 1)
+	push	(_main_period_1_52 + 2)
+	push	(_main_period_1_52 + 3)
 	mov	dptr,#0x0000
 	mov	b,#0x7A
 	mov	a,#0x44
 	lcall	___fsmul
-	mov	r2,dpl
-	mov	r3,dph
-	mov	r4,b
-	mov	r5,a
+	mov	r6,dpl
+	mov	r7,dph
+	mov	r0,b
+	mov	r1,a
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-	push	ar2
-	push	ar3
-	push	ar4
-	push	ar5
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
 	mov	a,#__str_7
 	push	acc
 	mov	a,#(__str_7 >> 8)
@@ -1334,7 +1501,373 @@ L013016?:
 	mov	a,sp
 	add	a,#0xf9
 	mov	sp,a
-	ljmp	L013018?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:307: bpm = 60.0/period;
+	push	_main_period_1_52
+	push	(_main_period_1_52 + 1)
+	push	(_main_period_1_52 + 2)
+	push	(_main_period_1_52 + 3)
+	mov	dptr,#0x0000
+	mov	b,#0x70
+	mov	a,#0x42
+	lcall	___fsdiv
+	mov	r6,dpl
+	mov	r7,dph
+	mov	r0,b
+	mov	r1,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:309: if(!unstable)
+	mov	a,_main_unstable_1_52
+	orl	a,(_main_unstable_1_52 + 1)
+	jz	L014062?
+	ljmp	L014022?
+L014062?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:311: if(bpm >= 50 && bpm <= 130) 
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
+	clr	a
+	push	acc
+	push	acc
+	mov	a,#0x48
+	push	acc
+	mov	a,#0x42
+	push	acc
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
+	lcall	___fslt
+	mov	r2,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	pop	ar1
+	pop	ar0
+	pop	ar7
+	pop	ar6
+	mov	a,r2
+	jnz	L014018?
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
+	clr	a
+	push	acc
+	push	acc
+	mov	a,#0x02
+	push	acc
+	mov	a,#0x43
+	push	acc
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
+	lcall	___fsgt
+	mov	r2,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	pop	ar1
+	pop	ar0
+	pop	ar7
+	pop	ar6
+	mov	a,r2
+	jnz	L014018?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:312: {mem = bpm; unstable=1;}
+	mov	_main_mem_1_52,r6
+	mov	(_main_mem_1_52 + 1),r7
+	mov	(_main_mem_1_52 + 2),r0
+	mov	(_main_mem_1_52 + 3),r1
+	mov	_main_unstable_1_52,#0x01
+	clr	a
+	mov	(_main_unstable_1_52 + 1),a
+	sjmp	L014022?
+L014018?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:314: else {printf("\rNot stable yet"); 
+	mov	a,#__str_8
+	push	acc
+	mov	a,#(__str_8 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	dec	sp
+	dec	sp
+	dec	sp
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:315: LCDprint("HR Not Stable", 2, 1); continue;}
+	mov	_LCDprint_PARM_2,#0x02
+	setb	_LCDprint_PARM_3
+	mov	dptr,#__str_9
+	mov	b,#0x80
+	lcall	_LCDprint
+	ljmp	L014033?
+L014022?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:319: if(bpm >= 50 && bpm <= 130 && ((bpm-mem) < 40 || (mem-bpm) < 40))
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
+	clr	a
+	push	acc
+	push	acc
+	mov	a,#0x48
+	push	acc
+	mov	a,#0x42
+	push	acc
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
+	lcall	___fslt
+	mov	r2,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	pop	ar1
+	pop	ar0
+	pop	ar7
+	pop	ar6
+	mov	a,r2
+	jz	L014065?
+	ljmp	L014024?
+L014065?:
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
+	clr	a
+	push	acc
+	push	acc
+	mov	a,#0x02
+	push	acc
+	mov	a,#0x43
+	push	acc
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
+	lcall	___fsgt
+	mov	r2,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	pop	ar1
+	pop	ar0
+	pop	ar7
+	pop	ar6
+	mov	a,r2
+	jz	L014066?
+	ljmp	L014024?
+L014066?:
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
+	push	_main_mem_1_52
+	push	(_main_mem_1_52 + 1)
+	push	(_main_mem_1_52 + 2)
+	push	(_main_mem_1_52 + 3)
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
+	lcall	___fssub
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	clr	a
+	push	acc
+	push	acc
+	mov	a,#0x20
+	push	acc
+	mov	a,#0x42
+	push	acc
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
+	lcall	___fslt
+	mov	r2,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	pop	ar1
+	pop	ar0
+	pop	ar7
+	pop	ar6
+	mov	a,r2
+	jnz	L014023?
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
+	push	ar6
+	push	ar7
+	push	ar0
+	push	ar1
+	mov	dpl,_main_mem_1_52
+	mov	dph,(_main_mem_1_52 + 1)
+	mov	b,(_main_mem_1_52 + 2)
+	mov	a,(_main_mem_1_52 + 3)
+	lcall	___fssub
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	clr	a
+	push	acc
+	push	acc
+	mov	a,#0x20
+	push	acc
+	mov	a,#0x42
+	push	acc
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
+	lcall	___fslt
+	mov	r2,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	pop	ar1
+	pop	ar0
+	pop	ar7
+	pop	ar6
+	mov	a,r2
+	jz	L014024?
+L014023?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:321: mem = bpm;
+	mov	_main_mem_1_52,r6
+	mov	(_main_mem_1_52 + 1),r7
+	mov	(_main_mem_1_52 + 2),r0
+	mov	(_main_mem_1_52 + 3),r1
+	sjmp	L014025?
+L014024?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:323: else bpm = mem;
+	mov	r6,_main_mem_1_52
+	mov	r7,(_main_mem_1_52 + 1)
+	mov	r0,(_main_mem_1_52 + 2)
+	mov	r1,(_main_mem_1_52 + 3)
+L014025?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:326: bpm_int = (int) bpm;
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
+	lcall	___fs2sint
+	mov	r2,dpl
+	mov	r3,dph
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:327: printf( "\rperiod=%fs    heart rate=%dbpm	%s" , period, bpm_int,bpm_string);
+	push	ar2
+	push	ar3
+	push	_main_bpm_string_1_52
+	push	(_main_bpm_string_1_52 + 1)
+	push	(_main_bpm_string_1_52 + 2)
+	push	ar2
+	push	ar3
+	push	_main_period_1_52
+	push	(_main_period_1_52 + 1)
+	push	(_main_period_1_52 + 2)
+	push	(_main_period_1_52 + 3)
+	mov	a,#__str_10
+	push	acc
+	mov	a,#(__str_10 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xf4
+	mov	sp,a
+	pop	ar3
+	pop	ar2
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:331: while(bpm_int)
+	clr	a
+	mov	_main_count_1_52,a
+	mov	(_main_count_1_52 + 1),a
+L014029?:
+	mov	a,r2
+	orl	a,r3
+	jz	L014031?
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:333: bpm_string[count] = 48+bpm_int%10;
+	mov	a,_main_count_1_52
+	add	a,_main_bpm_string_1_52
+	mov	r6,a
+	mov	a,(_main_count_1_52 + 1)
+	addc	a,(_main_bpm_string_1_52 + 1)
+	mov	r7,a
+	mov	r0,(_main_bpm_string_1_52 + 2)
+	mov	__modsint_PARM_2,#0x0A
+	clr	a
+	mov	(__modsint_PARM_2 + 1),a
+	mov	dpl,r2
+	mov	dph,r3
+	push	ar2
+	push	ar3
+	push	ar6
+	push	ar7
+	push	ar0
+	lcall	__modsint
+	mov	r1,dpl
+	pop	ar0
+	pop	ar7
+	pop	ar6
+	pop	ar3
+	pop	ar2
+	mov	a,#0x30
+	add	a,r1
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	lcall	__gptrput
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:334: bpm_int /= 10;
+	mov	__divsint_PARM_2,#0x0A
+	clr	a
+	mov	(__divsint_PARM_2 + 1),a
+	mov	dpl,r2
+	mov	dph,r3
+	lcall	__divsint
+	mov	r2,dpl
+	mov	r3,dph
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:335: count++;
+	inc	_main_count_1_52
+	clr	a
+	cjne	a,_main_count_1_52,L014029?
+	inc	(_main_count_1_52 + 1)
+	sjmp	L014029?
+L014031?:
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:337: bpm_string[count]='\0';
+	mov	a,_main_count_1_52
+	add	a,_main_bpm_string_1_52
+	mov	r2,a
+	mov	a,(_main_count_1_52 + 1)
+	addc	a,(_main_bpm_string_1_52 + 1)
+	mov	r3,a
+	mov	r4,(_main_bpm_string_1_52 + 2)
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	clr	a
+	lcall	__gptrput
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:339: LCDprint_inv(bpm_string, 2, 1);
+	mov	_LCDprint_inv_PARM_2,#0x02
+	setb	_LCDprint_inv_PARM_3
+	mov	dpl,_main_bpm_string_1_52
+	mov	dph,(_main_bpm_string_1_52 + 1)
+	mov	b,(_main_bpm_string_1_52 + 2)
+	lcall	_LCDprint_inv
+	ljmp	L014033?
 	rseg R_CSEG
 
 	rseg R_XINIT
@@ -1383,11 +1916,24 @@ __str_5:
 	db 'Feb 28 2018'
 	db 0x00
 __str_6:
-	db '17:29:55'
+	db '20:27:42'
 	db 0x00
 __str_7:
 	db 0x0D
 	db 'T=%f ms    '
+	db 0x00
+__str_8:
+	db 0x0D
+	db 'Not stable yet'
+	db 0x00
+__str_9:
+	db 'HR Not Stable'
+	db 0x00
+__str_10:
+	db 0x0D
+	db 'period=%fs    heart rate=%dbpm'
+	db 0x09
+	db '%s'
 	db 0x00
 
 	CSEG

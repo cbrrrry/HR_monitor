@@ -24,6 +24,7 @@ Should be coupled with a finger-sensor that utilizes IR radiation and it's diffe
 
 #define input P2_0 
 #define CHARS_PER_LINE 16
+#define sample_size 6
 
 
 unsigned char overflow_count;
@@ -192,6 +193,19 @@ void LCDprint(char * string, unsigned char line, bit clear)
 	if(clear) for(; j<CHARS_PER_LINE; j++) WriteData(' '); // Clear the rest of the line
 }
 
+void LCDprint_inv(char * string, unsigned char line, bit clear)
+{
+	int j;
+	int length=0;
+
+	WriteCommand(line==2?0xc0:0x80);
+	waitms(5);
+	for(j=0; string[j]!=0; j++)	length++;
+	for(j=length-1; j>=0; j--) WriteData(string[j]);// Write the message
+	if(clear) for(; j<CHARS_PER_LINE; j++) WriteData(' '); // Clear the rest of the line
+}
+
+
 int getsn (char * buff, int len)
 {
 	int j;
@@ -225,7 +239,14 @@ void main (void)
 {
 
 	// char buff[17];
-	float period;
+	float period=0.0;
+	float bpm=0.0;
+	float mem=0.0;
+	int unstable=0;
+	int bpm_int=0;
+	int count=0;
+	
+	char * bpm_string=NULL;
 
 	//Initialize Timer0 to be used to count the period
 	TIMER0_Init();
@@ -256,9 +277,11 @@ void main (void)
 		TH0=0;
 		TF0=0;
 		overflow_count=0;
+
 		
 		while(input!=0); // Wait for the signal to be zero
 		while(input!=1); // Wait for the signal to be one
+		
 		TR0=1; // Start the timer
 		while(input!=0) // Wait for the signal to be zero
 		{
@@ -270,7 +293,7 @@ void main (void)
 		}
 		while(input!=1) // Wait for the signal to be one
 		{
-			if(input==1) // Did the 16-bit timer overflow?
+			if(TF0==1) // Did the 16-bit timer overflow?
 			{
 				TF0=0;
 				overflow_count++;
@@ -281,10 +304,44 @@ void main (void)
 		// Send the period to the serial port
 		printf( "\rT=%f ms    ", period*1000.0);
 
-    }
+			bpm = 60.0/period;
+
+		if(!unstable)
+			{
+				if(bpm >= 50 && bpm <= 130) 
+					{mem = bpm; unstable=1;}
+
+				else {printf("\rNot stable yet"); 
+					LCDprint("HR Not Stable", 2, 1); continue;}
+			} 
+
+			//filters out errant HR measurements to smooth out signal. 
+		if(bpm >= 50 && bpm <= 130 && ((bpm-mem) < 40 || (mem-bpm) < 40))
+				{
+					mem = bpm;
+				}
+			else bpm = mem;
+		
+		// Send the period to the serial port
+		bpm_int = (int) bpm;
+		printf( "\rperiod=%fs    heart rate=%dbpm	%s" , period, bpm_int,bpm_string);
+		count = 0;	
+	 
+
+		while(bpm_int)
+		{
+			bpm_string[count] = 48+bpm_int%10;
+			bpm_int /= 10;
+			count++;
+		}
+		bpm_string[count]='\0';
+		
+				LCDprint_inv(bpm_string, 2, 1);
 
     
  }
+
+}
     
 	
 

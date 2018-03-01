@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by C51
 ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-; This file was generated Mon Feb 26 14:35:03 2018
+; This file was generated Wed Feb 28 19:57:48 2018
 ;--------------------------------------------------------
 $name LCD_test
 $optc51 --model-small

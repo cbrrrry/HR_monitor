@@ -1,7 +1,7 @@
 0000              1   ;--------------------------------------------------------
 0000              2   ; File Created by C51
 0000              3   ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-0000              4   ; This file was generated Mon Feb 26 14:35:03 2018
+0000              4   ; This file was generated Wed Feb 28 19:57:48 2018
 0000              5   ;--------------------------------------------------------
                   5   $name LCD_test
                   6   $optc51 --model-small
@@ -581,7 +581,7 @@
 0018            581   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:53: while ((CLKSEL & 0x80) == 0);
 0018            582   L002001?:
 0018 E5A9       583            mov     a,_CLKSEL
-001A 30E788     584            jnb     acc.7,L002001?
+001A 30E720     584            jnb     acc.7,L002001?
 001D            585   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:54: CLKSEL = 0x03;
 001D 75A903     586            mov     _CLKSEL,#0x03
 0020            587   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:55: CLKSEL = 0x03;
@@ -589,7 +589,7 @@
 0023            589   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:56: while ((CLKSEL & 0x80) == 0);
 0023            590   L002004?:
 0023 E5A9       591            mov     a,_CLKSEL
-0025 30E708     592            jnb     acc.7,L002004?
+0025 30E7A0     592            jnb     acc.7,L002004?
 0028            593   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:61: P0MDOUT |= 0x10; // Enable UART0 TX as push-pull output
 0028 43A410     594            orl     _P0MDOUT,#0x10
 002B            595   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:62: XBR0     = 0x01; // Enable UART0 on P0.4(TX) and P0.5(RX)                     
@@ -649,7 +649,7 @@
 0069            649   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:97: while (!(TMR3CN0 & 0x80));  // Wait for overflow
 0069            650   L003001?:
 0069 E591       651            mov     a,_TMR3CN0
-006B 30E708     652            jnb     acc.7,L003001?
+006B 30E7A0     652            jnb     acc.7,L003001?
 006E            653   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:98: TMR3CN0 &= ~(0x80);         // Clear overflow indicator
 006E 53917F     654            anl     _TMR3CN0,#0x7F
 0071            655   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:95: for (i = 0; i < us; i++)       // Count <us> overflows
@@ -686,7 +686,7 @@
 0087            686   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:108: for (k=0; k<4; k++) Timer3us(250);
 0087 7E00       687            mov     r6,#0x00
 0089            688   L004001?:
-0089 BE0448     689            cjne    r6,#0x04,L004018?
+0089 BE04E0     689            cjne    r6,#0x04,L004018?
 008C            690   L004018?:
 008C 5001       691            jnc     L004007?
 008E 7582FA     692            mov     dpl,#0xFA
@@ -706,7 +706,7 @@
 00AB            706   L004007?:
 00AB            707   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:107: for(j=0; j<ms; j++)
 00AB 0C         708            inc     r4
-00AC BC0088     709            cjne    r4,#0x00,L004005?
+00AC BC0020     709            cjne    r4,#0x00,L004005?
 00AF 0D         710            inc     r5
 00B0 8001       711            sjmp    L004005?
 00B2            712   L004009?:
@@ -866,7 +866,7 @@
 0148 ACF0       866            mov     r4,b
 014A            867   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:171: WriteCommand(line==2?0xc0:0x80);
 014A 7402       868            mov     a,#0x02
-014C B5B008     869            cjne    a,_LCDprint_PARM_2,L010013?
+014C B5B0A0     869            cjne    a,_LCDprint_PARM_2,L010013?
 014F 7DC0       870            mov     r5,#0xC0
 0151 8001       871            sjmp    L010014?
 0153            872   L010013?:
@@ -913,12 +913,12 @@
 0199 D003       913            pop     ar3
 019B D002       914            pop     ar2
 019D 0D         915            inc     r5
-019E BD0088     916            cjne    r5,#0x00,L010003?
+019E BD0020     916            cjne    r5,#0x00,L010003?
 01A1 0E         917            inc     r6
 01A2 8001       918            sjmp    L010003?
 01A4            919   L010006?:
 01A4            920   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:174: if(clear) for(; j<CHARS_PER_LINE; j++) WriteData(' '); // Clear the rest of the line
-01A4 302048     921            jnb     _LCDprint_PARM_3,L010011?
+01A4 3020E0     921            jnb     _LCDprint_PARM_3,L010011?
 01A7 8D02       922            mov     ar2,r5
 01A9 8E03       923            mov     ar3,r6
 01AB            924   L010007?:
@@ -936,7 +936,7 @@
 01C0 D003       936            pop     ar3
 01C2 D002       937            pop     ar2
 01C4 0A         938            inc     r2
-01C5 BA0088     939            cjne    r2,#0x00,L010007?
+01C5 BA0020     939            cjne    r2,#0x00,L010007?
 01C8 0B         940            inc     r3
 01C9 8001       941            sjmp    L010007?
 01CB            942   L010011?:
@@ -955,13 +955,13 @@
 01CC            955   ;         function getsn
 01CC            956   ;        -----------------------------------------
 01CC            957   _getsn:
-01CC 858278     958            mov     _getsn_buff_1_42,dpl
-01CF 858379     959            mov     (_getsn_buff_1_42 + 1),dph
-01D2 85F07A     960            mov     (_getsn_buff_1_42 + 2),b
+01CC 858210     958            mov     _getsn_buff_1_42,dpl
+01CF 858311     959            mov     (_getsn_buff_1_42 + 1),dph
+01D2 85F012     960            mov     (_getsn_buff_1_42 + 2),b
 01D5            961   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:182: for(j=0; j<(len-1); j++)
 01D5 E4         962            clr     a
-01D6 F5C8       963            mov     _getsn_sloc0_1_0,a
-01D8 F5C9       964            mov     (_getsn_sloc0_1_0 + 1),a
+01D6 F560       963            mov     _getsn_sloc0_1_0,a
+01D8 F561       964            mov     (_getsn_sloc0_1_0 + 1),a
 01DA E560       965            mov     a,_getsn_PARM_2
 01DC 24FF       966            add     a,#0xff
 01DE FF         967            mov     r7,a
@@ -992,37 +992,37 @@
 0208 D007       992            pop     ar7
 020A D002       993            pop     ar2
 020C            994   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:185: if ( (c=='\n') || (c=='\r') )
-020C BB0A88     995            cjne    r3,#0x0A,L011015?
+020C BB0A20     995            cjne    r3,#0x0A,L011015?
 020F 8001       996            sjmp    L011001?
 0211            997   L011015?:
-0211 BB0D08     998            cjne    r3,#0x0D,L011002?
+0211 BB0DA0     998            cjne    r3,#0x0D,L011002?
 0214            999   L011001?:
 0214           1000   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:187: buff[j]=0;
-0214 E5C8      1001            mov     a,_getsn_sloc0_1_0
-0216 2578      1002            add     a,_getsn_buff_1_42
+0214 E560      1001            mov     a,_getsn_sloc0_1_0
+0216 2510      1002            add     a,_getsn_buff_1_42
 0218 FC        1003            mov     r4,a
-0219 E5C9      1004            mov     a,(_getsn_sloc0_1_0 + 1)
-021B 3579      1005            addc    a,(_getsn_buff_1_42 + 1)
+0219 E561      1004            mov     a,(_getsn_sloc0_1_0 + 1)
+021B 3511      1005            addc    a,(_getsn_buff_1_42 + 1)
 021D FD        1006            mov     r5,a
-021E AE7A      1007            mov     r6,(_getsn_buff_1_42 + 2)
+021E AE12      1007            mov     r6,(_getsn_buff_1_42 + 2)
 0220 8C82      1008            mov     dpl,r4
 0222 8D83      1009            mov     dph,r5
 0224 8EF0      1010            mov     b,r6
 0226 E4        1011            clr     a
 0227 120100    1012            lcall   __gptrput
 022A           1013   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:188: return j;
-022A 85C882    1014            mov     dpl,_getsn_sloc0_1_0
-022D 85C983    1015            mov     dph,(_getsn_sloc0_1_0 + 1)
+022A 856082    1014            mov     dpl,_getsn_sloc0_1_0
+022D 856183    1015            mov     dph,(_getsn_sloc0_1_0 + 1)
 0230 22        1016            ret
 0231           1017   L011002?:
 0231           1018   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:192: buff[j]=c;
 0231 E9        1019            mov     a,r1
-0232 2578      1020            add     a,_getsn_buff_1_42
+0232 2510      1020            add     a,_getsn_buff_1_42
 0234 FC        1021            mov     r4,a
 0235 EA        1022            mov     a,r2
-0236 3579      1023            addc    a,(_getsn_buff_1_42 + 1)
+0236 3511      1023            addc    a,(_getsn_buff_1_42 + 1)
 0238 FD        1024            mov     r5,a
-0239 AE7A      1025            mov     r6,(_getsn_buff_1_42 + 2)
+0239 AE12      1025            mov     r6,(_getsn_buff_1_42 + 2)
 023B 8C82      1026            mov     dpl,r4
 023D 8D83      1027            mov     dph,r5
 023F 8EF0      1028            mov     b,r6
@@ -1030,21 +1030,21 @@
 0242 120100    1030            lcall   __gptrput
 0245           1031   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:182: for(j=0; j<(len-1); j++)
 0245 09        1032            inc     r1
-0246 B90088    1033            cjne    r1,#0x00,L011018?
+0246 B90020    1033            cjne    r1,#0x00,L011018?
 0249 0A        1034            inc     r2
 024A           1035   L011018?:
-024A 89C8      1036            mov     _getsn_sloc0_1_0,r1
-024C 8AC9      1037            mov     (_getsn_sloc0_1_0 + 1),r2
+024A 8960      1036            mov     _getsn_sloc0_1_0,r1
+024C 8A61      1037            mov     (_getsn_sloc0_1_0 + 1),r2
 024E 8001      1038            sjmp    L011005?
 0250           1039   L011008?:
 0250           1040   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:195: buff[j]=0;
-0250 E5C8      1041            mov     a,_getsn_sloc0_1_0
-0252 2578      1042            add     a,_getsn_buff_1_42
+0250 E560      1041            mov     a,_getsn_sloc0_1_0
+0252 2510      1042            add     a,_getsn_buff_1_42
 0254 FA        1043            mov     r2,a
-0255 E5C9      1044            mov     a,(_getsn_sloc0_1_0 + 1)
-0257 3579      1045            addc    a,(_getsn_buff_1_42 + 1)
+0255 E561      1044            mov     a,(_getsn_sloc0_1_0 + 1)
+0257 3511      1045            addc    a,(_getsn_buff_1_42 + 1)
 0259 FB        1046            mov     r3,a
-025A AC7A      1047            mov     r4,(_getsn_buff_1_42 + 2)
+025A AC12      1047            mov     r4,(_getsn_buff_1_42 + 2)
 025C 8A82      1048            mov     dpl,r2
 025E 8B83      1049            mov     dph,r3
 0260 8CF0      1050            mov     b,r4
@@ -1069,21 +1069,21 @@
 0270           1069   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:206: LCDprint("LCD 4-bit test:", 1, 1);
 0270 75B001    1070            mov     _LCDprint_PARM_2,#0x01
 0273 D220      1071            setb    _LCDprint_PARM_3
-0275 90BBC8    1072            mov     dptr,#__str_0
+0275 90BC60    1072            mov     dptr,#__str_0
 0278 75F080    1073            mov     b,#0x80
 027B 120100    1074            lcall   _LCDprint
 027E           1075   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:207: LCDprint("Hello, World!", 2, 1);
 027E 75B002    1076            mov     _LCDprint_PARM_2,#0x02
 0281 D220      1077            setb    _LCDprint_PARM_3
-0283 90BC08    1078            mov     dptr,#__str_1
+0283 90BCA0    1078            mov     dptr,#__str_1
 0286 75F080    1079            mov     b,#0x80
 0289 120100    1080            lcall   _LCDprint
 028C           1081   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:208: while(1)
 028C           1082   L012002?:
 028C           1083   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:210: printf("Type what you want to display in line 2 (16 char max): ");
-028C 7488      1084            mov     a,#__str_2
+028C 7420      1084            mov     a,#__str_2
 028E C0E0      1085            push    acc
-0290 74BC      1086            mov     a,#(__str_2 >> 8)
+0290 74BD      1086            mov     a,#(__str_2 >> 8)
 0292 C0E0      1087            push    acc
 0294 7480      1088            mov     a,#0x80
 0296 C0E0      1089            push    acc
@@ -1095,11 +1095,11 @@
 02A1 756011    1095            mov     _getsn_PARM_2,#0x11
 02A4 E4        1096            clr     a
 02A5 F561      1097            mov     (_getsn_PARM_2 + 1),a
-02A7 90B408    1098            mov     dptr,#_main_buff_1_48
+02A7 90B4A0    1098            mov     dptr,#_main_buff_1_48
 02AA 75F040    1099            mov     b,#0x40
 02AD 120100    1100            lcall   _getsn
 02B0           1101   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:212: printf("\n");
-02B0 7448      1102            mov     a,#__str_3
+02B0 74E0      1102            mov     a,#__str_3
 02B2 C0E0      1103            push    acc
 02B4 74BD      1104            mov     a,#(__str_3 >> 8)
 02B6 C0E0      1105            push    acc
@@ -1112,7 +1112,7 @@
 02C5           1112   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\LCD_test.c:213: LCDprint(buff, 2, 1);
 02C5 75B002    1113            mov     _LCDprint_PARM_2,#0x02
 02C8 D220      1114            setb    _LCDprint_PARM_3
-02CA 90B408    1115            mov     dptr,#_main_buff_1_48
+02CA 90B4A0    1115            mov     dptr,#_main_buff_1_48
 02CD 75F040    1116            mov     b,#0x40
 02D0 120100    1117            lcall   _LCDprint
 02D3 8001      1118            sjmp    L012002?
