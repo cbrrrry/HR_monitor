@@ -1,11 +1,10 @@
 ;--------------------------------------------------------
 ; File Created by C51
 ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-; This file was generated Thu Mar 01 10:42:18 2018
+; This file was generated Thu Mar 01 13:16:04 2018
 ;--------------------------------------------------------
 $name hr_monitor
 $optc51 --model-small
-$printf_float
 	R_DSEG    segment data
 	R_CSEG    segment code
 	R_BSEG    segment bit
@@ -505,8 +504,6 @@ _getsn_buff_1_44:
 	ds 3
 _getsn_sloc0_1_0:
 	ds 2
-_main_period_1_52:
-	ds 4
 _main_mem_1_52:
 	ds 4
 _main_unstable_1_52:
@@ -1227,13 +1224,13 @@ _TIMER0_Init:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;period                    Allocated with name '_main_period_1_52'
-;bpm                       Allocated to registers r6 r7 r0 r1 
+;period                    Allocated to registers r2 r3 r4 r5 
+;bpm                       Allocated to registers r2 r3 r4 r5 
 ;mem                       Allocated with name '_main_mem_1_52'
 ;unstable                  Allocated with name '_main_unstable_1_52'
 ;bpm_int                   Allocated to registers r2 r3 
 ;count                     Allocated with name '_main_count_1_52'
-;sum                       Allocated to registers r2 r3 r4 r5 
+;sum                       Allocated to registers r6 r7 r0 r1 
 ;bpm_string                Allocated with name '_main_bpm_string_1_52'
 ;------------------------------------------------------------
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:238: void main (void) 
@@ -1284,36 +1281,6 @@ _main:
 	dec	sp
 	dec	sp
 	dec	sp
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:270: __FILE__, __DATE__, __TIME__);
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:269: "Compiled: %s, %s\n\n",
-	mov	a,#__str_6
-	push	acc
-	mov	a,#(__str_6 >> 8)
-	push	acc
-	mov	a,#0x80
-	push	acc
-	mov	a,#__str_5
-	push	acc
-	mov	a,#(__str_5 >> 8)
-	push	acc
-	mov	a,#0x80
-	push	acc
-	mov	a,#__str_4
-	push	acc
-	mov	a,#(__str_4 >> 8)
-	push	acc
-	mov	a,#0x80
-	push	acc
-	mov	a,#__str_3
-	push	acc
-	mov	a,#(__str_3 >> 8)
-	push	acc
-	mov	a,#0x80
-	push	acc
-	lcall	_printf
-	mov	a,sp
-	add	a,#0xf4
-	mov	sp,a
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:273: while (1)
 L014033?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:276: TL0=0; 
@@ -1465,56 +1432,26 @@ L014016?:
 	mov	b,#0x32
 	mov	a,#0x34
 	lcall	___fsmul
-	mov	_main_period_1_52,dpl
-	mov	(_main_period_1_52 + 1),dph
-	mov	(_main_period_1_52 + 2),b
-	mov	(_main_period_1_52 + 3),a
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
 	mov	a,sp
 	add	a,#0xfc
-	mov	sp,a
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:305: printf( "\rT=%f ms    ", period*1000.0);
-	push	_main_period_1_52
-	push	(_main_period_1_52 + 1)
-	push	(_main_period_1_52 + 2)
-	push	(_main_period_1_52 + 3)
-	mov	dptr,#0x0000
-	mov	b,#0x7A
-	mov	a,#0x44
-	lcall	___fsmul
-	mov	r6,dpl
-	mov	r7,dph
-	mov	r0,b
-	mov	r1,a
-	mov	a,sp
-	add	a,#0xfc
-	mov	sp,a
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
-	mov	a,#__str_7
-	push	acc
-	mov	a,#(__str_7 >> 8)
-	push	acc
-	mov	a,#0x80
-	push	acc
-	lcall	_printf
-	mov	a,sp
-	add	a,#0xf9
 	mov	sp,a
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:307: bpm = 60.0/period;
-	push	_main_period_1_52
-	push	(_main_period_1_52 + 1)
-	push	(_main_period_1_52 + 2)
-	push	(_main_period_1_52 + 3)
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
 	mov	dptr,#0x0000
 	mov	b,#0x70
 	mov	a,#0x42
 	lcall	___fsdiv
-	mov	r6,dpl
-	mov	r7,dph
-	mov	r0,b
-	mov	r1,a
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
@@ -1525,10 +1462,10 @@ L014016?:
 	ljmp	L014022?
 L014062?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:311: if(bpm >= 40 && bpm <= 180) 
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
 	clr	a
 	push	acc
 	push	acc
@@ -1536,25 +1473,25 @@ L014062?:
 	push	acc
 	mov	a,#0x42
 	push	acc
-	mov	dpl,r6
-	mov	dph,r7
-	mov	b,r0
-	mov	a,r1
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
 	lcall	___fslt
-	mov	r2,dpl
+	mov	r6,dpl
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-	pop	ar1
-	pop	ar0
-	pop	ar7
-	pop	ar6
-	mov	a,r2
+	pop	ar5
+	pop	ar4
+	pop	ar3
+	pop	ar2
+	mov	a,r6
 	jnz	L014018?
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
 	clr	a
 	push	acc
 	push	acc
@@ -1562,35 +1499,35 @@ L014062?:
 	push	acc
 	mov	a,#0x43
 	push	acc
-	mov	dpl,r6
-	mov	dph,r7
-	mov	b,r0
-	mov	a,r1
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
 	lcall	___fsgt
-	mov	r2,dpl
+	mov	r6,dpl
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-	pop	ar1
-	pop	ar0
-	pop	ar7
-	pop	ar6
-	mov	a,r2
+	pop	ar5
+	pop	ar4
+	pop	ar3
+	pop	ar2
+	mov	a,r6
 	jnz	L014018?
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:312: {mem = bpm; unstable=1;}
-	mov	_main_mem_1_52,r6
-	mov	(_main_mem_1_52 + 1),r7
-	mov	(_main_mem_1_52 + 2),r0
-	mov	(_main_mem_1_52 + 3),r1
+	mov	_main_mem_1_52,r2
+	mov	(_main_mem_1_52 + 1),r3
+	mov	(_main_mem_1_52 + 2),r4
+	mov	(_main_mem_1_52 + 3),r5
 	mov	_main_unstable_1_52,#0x01
 	clr	a
 	mov	(_main_unstable_1_52 + 1),a
 	sjmp	L014022?
 L014018?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:314: else {printf("\rNot stable yet"); 
-	mov	a,#__str_8
+	mov	a,#__str_3
 	push	acc
-	mov	a,#(__str_8 >> 8)
+	mov	a,#(__str_3 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
@@ -1601,44 +1538,44 @@ L014018?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:315: LCDprint("HR Not Stable", 2, 1); continue;}
 	mov	_LCDprint_PARM_2,#0x02
 	setb	_LCDprint_PARM_3
-	mov	dptr,#__str_9
+	mov	dptr,#__str_4
 	mov	b,#0x80
 	lcall	_LCDprint
 	ljmp	L014033?
 L014022?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:319: if(bpm >= 40 && bpm <= 180 && ((bpm-mem) < 40 || (mem-bpm) < 40))
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:319: if(bpm >= 50 && bpm <= 180 && ((bpm-mem) < 40 || (mem-bpm) < 40))
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
 	clr	a
 	push	acc
 	push	acc
-	mov	a,#0x20
+	mov	a,#0x48
 	push	acc
 	mov	a,#0x42
 	push	acc
-	mov	dpl,r6
-	mov	dph,r7
-	mov	b,r0
-	mov	a,r1
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
 	lcall	___fslt
-	mov	r2,dpl
+	mov	r6,dpl
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-	pop	ar1
-	pop	ar0
-	pop	ar7
-	pop	ar6
-	mov	a,r2
+	pop	ar5
+	pop	ar4
+	pop	ar3
+	pop	ar2
+	mov	a,r6
 	jz	L014065?
 	ljmp	L014024?
 L014065?:
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
 	clr	a
 	push	acc
 	push	acc
@@ -1646,40 +1583,40 @@ L014065?:
 	push	acc
 	mov	a,#0x43
 	push	acc
-	mov	dpl,r6
-	mov	dph,r7
-	mov	b,r0
-	mov	a,r1
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
 	lcall	___fsgt
-	mov	r2,dpl
+	mov	r6,dpl
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-	pop	ar1
-	pop	ar0
-	pop	ar7
-	pop	ar6
-	mov	a,r2
+	pop	ar5
+	pop	ar4
+	pop	ar3
+	pop	ar2
+	mov	a,r6
 	jz	L014066?
 	ljmp	L014024?
 L014066?:
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
 	push	_main_mem_1_52
 	push	(_main_mem_1_52 + 1)
 	push	(_main_mem_1_52 + 2)
 	push	(_main_mem_1_52 + 3)
-	mov	dpl,r6
-	mov	dph,r7
-	mov	b,r0
-	mov	a,r1
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
 	lcall	___fssub
-	mov	r2,dpl
-	mov	r3,dph
-	mov	r4,b
-	mov	r5,a
+	mov	r6,dpl
+	mov	r7,dph
+	mov	r0,b
+	mov	r1,a
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
@@ -1690,38 +1627,38 @@ L014066?:
 	push	acc
 	mov	a,#0x42
 	push	acc
-	mov	dpl,r2
-	mov	dph,r3
-	mov	b,r4
-	mov	a,r5
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
 	lcall	___fslt
-	mov	r2,dpl
+	mov	r6,dpl
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-	pop	ar1
-	pop	ar0
-	pop	ar7
-	pop	ar6
-	mov	a,r2
+	pop	ar5
+	pop	ar4
+	pop	ar3
+	pop	ar2
+	mov	a,r6
 	jnz	L014023?
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
-	push	ar6
-	push	ar7
-	push	ar0
-	push	ar1
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
 	mov	dpl,_main_mem_1_52
 	mov	dph,(_main_mem_1_52 + 1)
 	mov	b,(_main_mem_1_52 + 2)
 	mov	a,(_main_mem_1_52 + 3)
 	lcall	___fssub
-	mov	r2,dpl
-	mov	r3,dph
-	mov	r4,b
-	mov	r5,a
+	mov	r6,dpl
+	mov	r7,dph
+	mov	r0,b
+	mov	r1,a
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
@@ -1732,49 +1669,49 @@ L014066?:
 	push	acc
 	mov	a,#0x42
 	push	acc
-	mov	dpl,r2
-	mov	dph,r3
-	mov	b,r4
-	mov	a,r5
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
 	lcall	___fslt
-	mov	r2,dpl
+	mov	r6,dpl
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
-	pop	ar1
-	pop	ar0
-	pop	ar7
-	pop	ar6
-	mov	a,r2
+	pop	ar5
+	pop	ar4
+	pop	ar3
+	pop	ar2
+	mov	a,r6
 	jz	L014024?
 L014023?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:321: mem = bpm;
-	mov	_main_mem_1_52,r6
-	mov	(_main_mem_1_52 + 1),r7
-	mov	(_main_mem_1_52 + 2),r0
-	mov	(_main_mem_1_52 + 3),r1
+	mov	_main_mem_1_52,r2
+	mov	(_main_mem_1_52 + 1),r3
+	mov	(_main_mem_1_52 + 2),r4
+	mov	(_main_mem_1_52 + 3),r5
 	sjmp	L014025?
 L014024?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:323: else bpm = mem;
-	mov	r6,_main_mem_1_52
-	mov	r7,(_main_mem_1_52 + 1)
-	mov	r0,(_main_mem_1_52 + 2)
-	mov	r1,(_main_mem_1_52 + 3)
+	mov	r2,_main_mem_1_52
+	mov	r3,(_main_mem_1_52 + 1)
+	mov	r4,(_main_mem_1_52 + 2)
+	mov	r5,(_main_mem_1_52 + 3)
 L014025?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:327: sum=bpm+mem; 
 	push	_main_mem_1_52
 	push	(_main_mem_1_52 + 1)
 	push	(_main_mem_1_52 + 2)
 	push	(_main_mem_1_52 + 3)
-	mov	dpl,r6
-	mov	dph,r7
-	mov	b,r0
-	mov	a,r1
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
 	lcall	___fsadd
-	mov	r2,dpl
-	mov	r3,dph
-	mov	r4,b
-	mov	r5,a
+	mov	r6,dpl
+	mov	r7,dph
+	mov	r0,b
+	mov	r1,a
 	mov	a,sp
 	add	a,#0xfc
 	mov	sp,a
@@ -1785,47 +1722,40 @@ L014025?:
 	push	acc
 	mov	a,#0x40
 	push	acc
-	mov	dpl,r2
-	mov	dph,r3
-	mov	b,r4
-	mov	a,r5
-	lcall	___fsdiv
-	mov	r6,dpl
-	mov	r7,dph
-	mov	r0,b
-	mov	r1,a
-	mov	a,sp
-	add	a,#0xfc
-	mov	sp,a
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:330: bpm_int = (int) bpm;
 	mov	dpl,r6
 	mov	dph,r7
 	mov	b,r0
 	mov	a,r1
+	lcall	___fsdiv
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:330: bpm_int = (int) bpm;
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
 	lcall	___fs2sint
 	mov	r2,dpl
 	mov	r3,dph
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:331: printf( "\rperiod=%fs    heart rate=%dbpm	%s" , period, bpm_int,bpm_string);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:331: printf( "%d\r\n" , bpm_int);
 	push	ar2
 	push	ar3
-	push	_main_bpm_string_1_52
-	push	(_main_bpm_string_1_52 + 1)
-	push	(_main_bpm_string_1_52 + 2)
 	push	ar2
 	push	ar3
-	push	_main_period_1_52
-	push	(_main_period_1_52 + 1)
-	push	(_main_period_1_52 + 2)
-	push	(_main_period_1_52 + 3)
-	mov	a,#__str_10
+	mov	a,#__str_5
 	push	acc
-	mov	a,#(__str_10 >> 8)
+	mov	a,#(__str_5 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
 	lcall	_printf
 	mov	a,sp
-	add	a,#0xf4
+	add	a,#0xfb
 	mov	sp,a
 	pop	ar3
 	pop	ar2
@@ -1900,7 +1830,7 @@ L014031?:
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:342: LCDprint("BPM:", 1, 1);
 	mov	_LCDprint_PARM_2,#0x01
 	setb	_LCDprint_PARM_3
-	mov	dptr,#__str_11
+	mov	dptr,#__str_6
 	mov	b,#0x80
 	lcall	_LCDprint
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:345: LCDprint_inv(bpm_string, 2, 1);
@@ -1927,58 +1857,18 @@ __str_2:
 	db '[2J'
 	db 0x00
 __str_3:
-	db 'EFM8 Period measurement at pin P2.0 using Timer 0.'
-	db 0x0A
-	db 'File: %s'
-	db 0x0A
-	db 'Compiled: %s, %s'
-	db 0x0A
-	db 0x0A
-	db 0x00
-__str_4:
-	db 'C:'
-	db 0x5C
-	db 'Users'
-	db 0x5C
-	db 'carso'
-	db 0x5C
-	db 'Documents'
-	db 0x5C
-	db '1. School'
-	db 0x5C
-	db '0. Spring 2018'
-	db 0x5C
-	db 'Elec 292'
-	db 0x5C
-	db 'l'
-	db 'ab4'
-	db 0x5C
-	db 'hr_monitor.c'
-	db 0x00
-__str_5:
-	db 'Mar  1 2018'
-	db 0x00
-__str_6:
-	db '10:42:18'
-	db 0x00
-__str_7:
-	db 0x0D
-	db 'T=%f ms    '
-	db 0x00
-__str_8:
 	db 0x0D
 	db 'Not stable yet'
 	db 0x00
-__str_9:
+__str_4:
 	db 'HR Not Stable'
 	db 0x00
-__str_10:
+__str_5:
+	db '%d'
 	db 0x0D
-	db 'period=%fs    heart rate=%dbpm'
-	db 0x09
-	db '%s'
+	db 0x0A
 	db 0x00
-__str_11:
+__str_6:
 	db 'BPM:'
 	db 0x00
 

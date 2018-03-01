@@ -264,11 +264,11 @@ void main (void)
 
 	printf("\x1b[2J"); // Clear screen using ANSI escape sequence.
 
-	printf ("EFM8 Period measurement at pin P2.0 using Timer 0.\n"
+/*	printf ("EFM8 BPM measurement at pin P2.0 using Timer 0.\n"
 	        "File: %s\n"
 	        "Compiled: %s, %s\n\n",
 	        __FILE__, __DATE__, __TIME__);
-
+*/
 
 	 while (1)
     {
@@ -302,7 +302,7 @@ void main (void)
 		TR0=0; // Stop timer 0, the 24-bit number [overflow_count-TH0-TL0] has the period!
 		period=(overflow_count*65536.0+TH0*256.0+TL0)*(12.0/SYSCLK);
 		// Send the period to the serial port
-		printf( "\rT=%f ms    ", period*1000.0);
+	//	printf( "\rT=%f ms    ", period*1000.0);
 
 			bpm = 60.0/period;
 
@@ -316,7 +316,7 @@ void main (void)
 			} 
 
 			//filters out errant HR measurements to smooth out signal. 
-		if(bpm >= 40 && bpm <= 180 && ((bpm-mem) < 40 || (mem-bpm) < 40))
+		if(bpm >= 50 && bpm <= 180 && ((bpm-mem) < 40 || (mem-bpm) < 40))
 				{
 					mem = bpm;
 				}
@@ -328,7 +328,7 @@ void main (void)
 			bpm=sum/2; 
 
 		bpm_int = (int) bpm;
-		printf( "\rperiod=%fs    heart rate=%dbpm	%s" , period, bpm_int,bpm_string);
+		printf( "%d\r\n" , bpm_int);
 		count = 0;	
 	 
 
