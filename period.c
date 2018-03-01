@@ -166,6 +166,7 @@ void main (void)
 		period=(overflow_count*65536.0+TH0*256.0+TL0)*(12.0/SYSCLK);
 		// Send the period to the serial port
 		printf( "\rT=%f ms    ", period*1000.0);
+		
     }
 	
 }

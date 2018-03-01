@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by C51
 ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-; This file was generated Wed Feb 28 11:51:19 2018
+; This file was generated Wed Feb 28 16:14:18 2018
 ;--------------------------------------------------------
 $name period
 $optc51 --model-small
@@ -990,7 +990,7 @@ __str_3:
 	db 'Feb 28 2018'
 	db 0x00
 __str_4:
-	db '11:51:19'
+	db '16:14:18'
 	db 0x00
 __str_5:
 	db 0x0D

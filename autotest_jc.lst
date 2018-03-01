@@ -1,7 +1,7 @@
 0000              1   ;--------------------------------------------------------
 0000              2   ; File Created by C51
 0000              3   ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-0000              4   ; This file was generated Mon Feb 26 13:52:00 2018
+0000              4   ; This file was generated Wed Feb 28 17:23:48 2018
 0000              5   ;--------------------------------------------------------
                   5   $name autotest_jc
                   6   $optc51 --model-small
@@ -580,7 +580,7 @@
 0018            580   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:56: while ((CLKSEL & 0x80) == 0);
 0018            581   L002001?:
 0018 E5A9       582            mov     a,_CLKSEL
-001A 30E768     583            jnb     acc.7,L002001?
+001A 30E7E8     583            jnb     acc.7,L002001?
 001D            584   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:57: CLKSEL = 0x07;
 001D 75A907     585            mov     _CLKSEL,#0x07
 0020            586   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:58: CLKSEL = 0x07;
@@ -588,7 +588,7 @@
 0023            588   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:59: while ((CLKSEL & 0x80) == 0);
 0023            589   L002004?:
 0023 E5A9       590            mov     a,_CLKSEL
-0025 30E7E8     591            jnb     acc.7,L002004?
+0025 30E768     591            jnb     acc.7,L002004?
 0028            592   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:72: P0MDOUT |= 0x10; // Enable UART0 TX as push-pull output
 0028 43A410     593            orl     _P0MDOUT,#0x10
 002B            594   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:73: XBR0     = 0x01; // Enable UART0 on P0.4(TX) and P0.5(RX)                     
@@ -648,7 +648,7 @@
 0069            648   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:108: while (!(TMR3CN0 & 0x80));  // Wait for overflow
 0069            649   L003001?:
 0069 E591       650            mov     a,_TMR3CN0
-006B 30E7E8     651            jnb     acc.7,L003001?
+006B 30E768     651            jnb     acc.7,L003001?
 006E            652   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:109: TMR3CN0 &= ~(0x80);         // Clear overflow indicator
 006E 53917F     653            anl     _TMR3CN0,#0x7F
 0071            654   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:106: for (i = 0; i < us; i++)       // Count <us> overflows
@@ -673,8 +673,8 @@
 007A AB83       673            mov     r3,dph
 007C            674   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:117: for(j=ms; j!=0; j--)
 007C            675   L004001?:
-007C BA00A8     676            cjne    r2,#0x00,L004010?
-007F BB00A8     677            cjne    r3,#0x00,L004010?
+007C BA0028     676            cjne    r2,#0x00,L004010?
+007F BB0028     677            cjne    r3,#0x00,L004010?
 0082 22         678            ret
 0083            679   L004010?:
 0083            680   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:119: Timer3us(249);
@@ -695,7 +695,7 @@
 00A1 D002       695            pop     ar2
 00A3            696   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:117: for(j=ms; j!=0; j--)
 00A3 1A         697            dec     r2
-00A4 BAFFE8     698            cjne    r2,#0xff,L004011?
+00A4 BAFF68     698            cjne    r2,#0xff,L004011?
 00A7 1B         699            dec     r3
 00A8            700   L004011?:
 00A8 8001       701            sjmp    L004001?
@@ -712,107 +712,107 @@
 00AA            712   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:130: j=0;
 00AA 7A00       713            mov     r2,#0x00
 00AC            714   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:132: if (P0_0==0) j++;
-00AC 208028     715            jb      _P0_0,L005002?
+00AC 2080A8     715            jb      _P0_0,L005002?
 00AF 7A01       716            mov     r2,#0x01
 00B1            717   L005002?:
 00B1            718   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:133: if (P0_1==0) j++;
-00B1 208168     719            jb      _P0_1,L005004?
+00B1 2081E8     719            jb      _P0_1,L005004?
 00B4 0A         720            inc     r2
 00B5            721   L005004?:
 00B5            722   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:134: if (P0_2==0) j++;
-00B5 2082A8     723            jb      _P0_2,L005006?
+00B5 208228     723            jb      _P0_2,L005006?
 00B8 0A         724            inc     r2
 00B9            725   L005006?:
 00B9            726   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:135: if (P0_3==0) j++;
-00B9 2083E8     727            jb      _P0_3,L005008?
+00B9 208368     727            jb      _P0_3,L005008?
 00BC 0A         728            inc     r2
 00BD            729   L005008?:
 00BD            730   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:138: if (P0_6==0) j++;
-00BD 208628     731            jb      _P0_6,L005010?
+00BD 2086A8     731            jb      _P0_6,L005010?
 00C0 0A         732            inc     r2
 00C1            733   L005010?:
 00C1            734   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:139: if (P0_7==0) j++;
-00C1 208768     735            jb      _P0_7,L005012?
+00C1 2087E8     735            jb      _P0_7,L005012?
 00C4 0A         736            inc     r2
 00C5            737   L005012?:
 00C5            738   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:141: if (P1_0==0) j++;
-00C5 2090A8     739            jb      _P1_0,L005014?
+00C5 209028     739            jb      _P1_0,L005014?
 00C8 0A         740            inc     r2
 00C9            741   L005014?:
 00C9            742   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:142: if (P1_1==0) j++;
-00C9 2091E8     743            jb      _P1_1,L005016?
+00C9 209168     743            jb      _P1_1,L005016?
 00CC 0A         744            inc     r2
 00CD            745   L005016?:
 00CD            746   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:143: if (P1_2==0) j++;
-00CD 209228     747            jb      _P1_2,L005018?
+00CD 2092A8     747            jb      _P1_2,L005018?
 00D0 0A         748            inc     r2
 00D1            749   L005018?:
 00D1            750   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:144: if (P1_3==0) j++;
-00D1 209368     751            jb      _P1_3,L005020?
+00D1 2093E8     751            jb      _P1_3,L005020?
 00D4 0A         752            inc     r2
 00D5            753   L005020?:
 00D5            754   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:145: if (P1_4==0) j++;
-00D5 2094A8     755            jb      _P1_4,L005022?
+00D5 209428     755            jb      _P1_4,L005022?
 00D8 0A         756            inc     r2
 00D9            757   L005022?:
 00D9            758   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:146: if (P1_5==0) j++;
-00D9 2095E8     759            jb      _P1_5,L005024?
+00D9 209568     759            jb      _P1_5,L005024?
 00DC 0A         760            inc     r2
 00DD            761   L005024?:
 00DD            762   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:147: if (P1_6==0) j++;
-00DD 209628     763            jb      _P1_6,L005026?
+00DD 2096A8     763            jb      _P1_6,L005026?
 00E0 0A         764            inc     r2
 00E1            765   L005026?:
 00E1            766   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:148: if (P1_7==0) j++;
-00E1 209768     767            jb      _P1_7,L005028?
+00E1 2097E8     767            jb      _P1_7,L005028?
 00E4 0A         768            inc     r2
 00E5            769   L005028?:
 00E5            770   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:150: if (P2_0==0) j++;
-00E5 20A0A8     771            jb      _P2_0,L005030?
+00E5 20A028     771            jb      _P2_0,L005030?
 00E8 0A         772            inc     r2
 00E9            773   L005030?:
 00E9            774   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:151: if (P2_1==0) j++;
-00E9 20A1E8     775            jb      _P2_1,L005032?
+00E9 20A168     775            jb      _P2_1,L005032?
 00EC 0A         776            inc     r2
 00ED            777   L005032?:
 00ED            778   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:152: if (P2_2==0) j++;
-00ED 20A228     779            jb      _P2_2,L005034?
+00ED 20A2A8     779            jb      _P2_2,L005034?
 00F0 0A         780            inc     r2
 00F1            781   L005034?:
 00F1            782   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:153: if (P2_3==0) j++;
-00F1 20A368     783            jb      _P2_3,L005036?
+00F1 20A3E8     783            jb      _P2_3,L005036?
 00F4 0A         784            inc     r2
 00F5            785   L005036?:
 00F5            786   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:154: if (P2_4==0) j++;
-00F5 20A4A8     787            jb      _P2_4,L005038?
+00F5 20A428     787            jb      _P2_4,L005038?
 00F8 0A         788            inc     r2
 00F9            789   L005038?:
 00F9            790   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:155: if (P2_5==0) j++;
-00F9 20A5E8     791            jb      _P2_5,L005040?
+00F9 20A568     791            jb      _P2_5,L005040?
 00FC 0A         792            inc     r2
 00FD            793   L005040?:
 00FD            794   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:156: if (P2_6==0) j++;
-00FD 20A628     795            jb      _P2_6,L005042?
+00FD 20A6A8     795            jb      _P2_6,L005042?
 0100 0A         796            inc     r2
 0101            797   L005042?:
 0101            798   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:158: if (P3_0==0) j++;
-0101 20B068     799            jb      _P3_0,L005044?
+0101 20B0E8     799            jb      _P3_0,L005044?
 0104 0A         800            inc     r2
 0105            801   L005044?:
 0105            802   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:159: if (P3_1==0) j++;
-0105 20B1A8     803            jb      _P3_1,L005046?
+0105 20B128     803            jb      _P3_1,L005046?
 0108 0A         804            inc     r2
 0109            805   L005046?:
 0109            806   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:160: if (P3_2==0) j++;
-0109 20B2E8     807            jb      _P3_2,L005048?
+0109 20B268     807            jb      _P3_2,L005048?
 010C 0A         808            inc     r2
 010D            809   L005048?:
 010D            810   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:161: if (P3_3==0) j++;
-010D 20B328     811            jb      _P3_3,L005050?
+010D 20B3A8     811            jb      _P3_3,L005050?
 0110 0A         812            inc     r2
 0111            813   L005050?:
 0111            814   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:162: if (P3_7==0) j++;
-0111 20B768     815            jb      _P3_7,L005052?
+0111 20B7E8     815            jb      _P3_7,L005052?
 0114 0A         816            inc     r2
 0115            817   L005052?:
 0115            818   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:164: return j;
@@ -840,7 +840,7 @@
 0125            840   L006009?:
 0125 25E0       841            add     a,acc
 0127            842   L006011?:
-0127 D5F028     843            djnz    b,L006009?
+0127 D5F0A8     843            djnz    b,L006009?
 012A FB         844            mov     r3,a
 012B            845   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:172: switch(pin/0x10)
 012B EA         846            mov     a,r2
@@ -852,7 +852,7 @@
 0134 EA         852            mov     a,r2
 0135 2A         853            add     a,r2
 0136 2A         854            add     a,r2
-0137 90BEA8     855            mov     dptr,#L006013?
+0137 90BF28     855            mov     dptr,#L006013?
 013A 73         856            jmp     @a+dptr
 013B            857   L006013?:
 013B 020100     858            ljmp    L006001?
@@ -903,7 +903,7 @@
 0164            903   L007009?:
 0164 25E0       904            add     a,acc
 0166            905   L007011?:
-0166 D5F028     906            djnz    b,L007009?
+0166 D5F0A8     906            djnz    b,L007009?
 0169            907   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:186: mask=~mask;
 0169 F4         908            cpl     a
 016A FB         909            mov     r3,a
@@ -917,7 +917,7 @@
 0174 EA         917            mov     a,r2
 0175 2A         918            add     a,r2
 0176 2A         919            add     a,r2
-0177 90C0A8     920            mov     dptr,#L007013?
+0177 90C128     920            mov     dptr,#L007013?
 017A 73         921            jmp     @a+dptr
 017B            922   L007013?:
 017B 020100     923            ljmp    L007001?
@@ -968,7 +968,7 @@
 01A4            968   L008009?:
 01A4 25E0       969            add     a,acc
 01A6            970   L008011?:
-01A6 D5F028     971            djnz    b,L008009?
+01A6 D5F0A8     971            djnz    b,L008009?
 01A9 FB         972            mov     r3,a
 01AA            973   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:201: switch(pin/0x10)
 01AA EA         974            mov     a,r2
@@ -980,7 +980,7 @@
 01B3 EA         980            mov     a,r2
 01B4 2A         981            add     a,r2
 01B5 2A         982            add     a,r2
-01B6 90C2A8     983            mov     dptr,#L008013?
+01B6 90C328     983            mov     dptr,#L008013?
 01B9 73         984            jmp     @a+dptr
 01BA            985   L008013?:
 01BA 020100     986            ljmp    L008001?
@@ -1031,7 +1031,7 @@
 01E3           1031   L009009?:
 01E3 25E0      1032            add     a,acc
 01E5           1033   L009011?:
-01E5 D5F028    1034            djnz    b,L009009?
+01E5 D5F0A8    1034            djnz    b,L009009?
 01E8           1035   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:215: mask=~mask;
 01E8 F4        1036            cpl     a
 01E9 FB        1037            mov     r3,a
@@ -1045,7 +1045,7 @@
 01F3 EA        1045            mov     a,r2
 01F4 2A        1046            add     a,r2
 01F5 2A        1047            add     a,r2
-01F6 90C4A8    1048            mov     dptr,#L009013?
+01F6 90C528    1048            mov     dptr,#L009013?
 01F9 73        1049            jmp     @a+dptr
 01FA           1050   L009013?:
 01FA 020100    1051            ljmp    L009001?
@@ -1097,7 +1097,7 @@
 0223           1097   L010010?:
 0223 25E0      1098            add     a,acc
 0225           1099   L010012?:
-0225 D5F028    1100            djnz    b,L010010?
+0225 D5F0A8    1100            djnz    b,L010010?
 0228 FB        1101            mov     r3,a
 0229           1102   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:230: switch(pin/0x10)
 0229 EA        1103            mov     a,r2
@@ -1109,7 +1109,7 @@
 0232 EA        1109            mov     a,r2
 0233 2A        1110            add     a,r2
 0234 2A        1111            add     a,r2
-0235 90C6A8    1112            mov     dptr,#L010014?
+0235 90C728    1112            mov     dptr,#L010014?
 0238 73        1113            jmp     @a+dptr
 0239           1114   L010014?:
 0239 020100    1115            ljmp    L010002?
@@ -1170,9 +1170,9 @@
 0270 C004      1170            push    ar4
 0272 C002      1171            push    ar2
 0274 C005      1172            push    ar5
-0276 74E8      1173            mov     a,#__str_0
+0276 7468      1173            mov     a,#__str_0
 0278 C0E0      1174            push    acc
-027A 74C7      1175            mov     a,#(__str_0 >> 8)
+027A 74C8      1175            mov     a,#(__str_0 >> 8)
 027C C0E0      1176            push    acc
 027E 7480      1177            mov     a,#0x80
 0280 C0E0      1178            push    acc
@@ -1208,9 +1208,9 @@
 029E C004      1208            push    ar4
 02A0 C002      1209            push    ar2
 02A2 C005      1210            push    ar5
-02A4 74E8      1211            mov     a,#__str_1
+02A4 7468      1211            mov     a,#__str_1
 02A6 C0E0      1212            push    acc
-02A8 74C8      1213            mov     a,#(__str_1 >> 8)
+02A8 74C9      1213            mov     a,#(__str_1 >> 8)
 02AA C0E0      1214            push    acc
 02AC 7480      1215            mov     a,#0x80
 02AE C0E0      1216            push    acc
@@ -1246,7 +1246,7 @@
 02CC C004      1246            push    ar4
 02CE C002      1247            push    ar2
 02D0 C005      1248            push    ar5
-02D2 7468      1249            mov     a,#__str_2
+02D2 74E8      1249            mov     a,#__str_2
 02D4 C0E0      1250            push    acc
 02D6 74C9      1251            mov     a,#(__str_2 >> 8)
 02D8 C0E0      1252            push    acc
@@ -1290,7 +1290,7 @@
 030B 33        1290            rlc     a
 030C FB        1291            mov     r3,a
 030D D002      1292            pop     ar2
-030F BB01A8    1293            cjne    r3,#0x01,L014002?
+030F BB0128    1293            cjne    r3,#0x01,L014002?
 0312 856082    1294            mov     dpl,_Test_Pair_PARM_2
 0315 C002      1295            push    ar2
 0317 120100    1296            lcall   _dofail
@@ -1301,7 +1301,7 @@
 031E 120100    1301            lcall   _countzero
 0321 AB82      1302            mov     r3,dpl
 0323 D002      1303            pop     ar2
-0325 BB02E8    1304            cjne    r3,#0x02,L014017?
+0325 BB0268    1304            cjne    r3,#0x02,L014017?
 0328 8001      1305            sjmp    L014004?
 032A           1306   L014017?:
 032A 856082    1307            mov     dpl,_Test_Pair_PARM_2
@@ -1336,7 +1336,7 @@
 0361 33        1336            rlc     a
 0362 FB        1337            mov     r3,a
 0363 D002      1338            pop     ar2
-0365 BB0168    1339            cjne    r3,#0x01,L014006?
+0365 BB01E8    1339            cjne    r3,#0x01,L014006?
 0368 8A82      1340            mov     dpl,r2
 036A C002      1341            push    ar2
 036C 120100    1342            lcall   _dofail
@@ -1347,7 +1347,7 @@
 0373 120100    1347            lcall   _countzero
 0376 AB82      1348            mov     r3,dpl
 0378 D002      1349            pop     ar2
-037A BB02A8    1350            cjne    r3,#0x02,L014020?
+037A BB0228    1350            cjne    r3,#0x02,L014020?
 037D 8001      1351            sjmp    L014008?
 037F           1352   L014020?:
 037F 8A82      1353            mov     dpl,r2
@@ -1404,7 +1404,7 @@
 03C5 C004      1404            push    ar4
 03C7 C002      1405            push    ar2
 03C9 C005      1406            push    ar5
-03CB 7468      1407            mov     a,#__str_3
+03CB 74E8      1407            mov     a,#__str_3
 03CD C0E0      1408            push    acc
 03CF 74CB      1409            mov     a,#(__str_3 >> 8)
 03D1 C0E0      1410            push    acc
@@ -1525,7 +1525,7 @@
 0487 9001F4    1525            mov     dptr,#0x01F4
 048A 120100    1526            lcall   _WaitXms
 048D           1527   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:332: printf("\n\nEFM8 board autotest\n");
-048D 7428      1528            mov     a,#__str_4
+048D 74A8      1528            mov     a,#__str_4
 048F C0E0      1529            push    acc
 0491 74CC      1530            mov     a,#(__str_4 >> 8)
 0493 C0E0      1531            push    acc
@@ -1554,7 +1554,7 @@
 04C3 758233    1554            mov     dpl,#0x33
 04C6 120100    1555            lcall   _Test_Pair
 04C9           1556   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:339: printf("\n");
-04C9 7468      1557            mov     a,#__str_5
+04C9 74E8      1557            mov     a,#__str_5
 04CB C0E0      1558            push    acc
 04CD 74CC      1559            mov     a,#(__str_5 >> 8)
 04CF C0E0      1560            push    acc
@@ -1581,7 +1581,7 @@
 04FC 758226    1581            mov     dpl,#0x26
 04FF 120100    1582            lcall   _Test_Pair
 0502           1583   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:344: printf("\n");
-0502 7468      1584            mov     a,#__str_5
+0502 74E8      1584            mov     a,#__str_5
 0504 C0E0      1585            push    acc
 0506 74CC      1586            mov     a,#(__str_5 >> 8)
 0508 C0E0      1587            push    acc
@@ -1608,7 +1608,7 @@
 0535 758222    1608            mov     dpl,#0x22
 0538 120100    1609            lcall   _Test_Pair
 053B           1610   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:349: printf("\n");
-053B 7468      1611            mov     a,#__str_5
+053B 74E8      1611            mov     a,#__str_5
 053D C0E0      1612            push    acc
 053F 74CC      1613            mov     a,#(__str_5 >> 8)
 0541 C0E0      1614            push    acc
@@ -1623,9 +1623,9 @@
 0553 758221    1623            mov     dpl,#0x21
 0556 120100    1624            lcall   _Test_Pair
 0559           1625   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\autotest_jc.c:352: printf("\n\nSuccess!\n");
-0559 74A8      1626            mov     a,#__str_6
+0559 7428      1626            mov     a,#__str_6
 055B C0E0      1627            push    acc
-055D 74CC      1628            mov     a,#(__str_6 >> 8)
+055D 74CD      1628            mov     a,#(__str_6 >> 8)
 055F C0E0      1629            push    acc
 0561 7480      1630            mov     a,#0x80
 0563 C0E0      1631            push    acc

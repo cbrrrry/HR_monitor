@@ -10,7 +10,7 @@ Should be coupled with a finger-sensor that utilizes IR radiation and it's diffe
 #include <EFM8LB1.h>
 #include <stdio.h>
 
-#define SYSCLK      24500000L  // SYSCLK frequency in Hz
+#define SYSCLK      72000000L  // SYSCLK frequency in Hz
 #define BAUDRATE      115200L  // Baud rate of UART in bps
 
 
@@ -21,17 +21,21 @@ Should be coupled with a finger-sensor that utilizes IR radiation and it's diffe
 #define LCD_D5 P2_3
 #define LCD_D6 P2_2
 #define LCD_D7 P2_1
+
+#define input P2_0 
 #define CHARS_PER_LINE 16
 
 
 unsigned char overflow_count;
-
 char _c51_external_startup (void)
 {
-	// Disable Watchdog with 2-byte key sequence
+	// Disable Watchdog with key sequence
 	SFRPAGE = 0x00;
 	WDTCN = 0xDE; //First key
 	WDTCN = 0xAD; //Second key
+  
+	VDM0CN |= 0x80;
+	RSTSRC = 0x02;
 
 	#if (SYSCLK == 48000000L)	
 		SFRPAGE = 0x10;
@@ -70,14 +74,14 @@ char _c51_external_startup (void)
 	#else
 		#error SYSCLK must be either 12250000L, 24500000L, 48000000L, or 72000000L
 	#endif
-
+	
 	P0MDOUT |= 0x10; // Enable UART0 TX as push-pull output
 	XBR0     = 0x01; // Enable UART0 on P0.4(TX) and P0.5(RX)                     
 	XBR1     = 0X00;
 	XBR2     = 0x40; // Enable crossbar and weak pull-ups
 
 	#if (((SYSCLK/BAUDRATE)/(2L*12L))>0xFFL)
-		#error Timer 0 reload value is incorrect because ((SYSCLK/BAUDRATE)/(2L*12L))>0xFF
+		#error Timer 0 reload value is incorrect because (SYSCLK/BAUDRATE)/(2L*12L) > 0xFF
 	#endif
 	// Configure Uart 0
 	SCON0 = 0x10;
@@ -91,6 +95,7 @@ char _c51_external_startup (void)
 	
 	return 0;
 }
+
 
 
 // Uses Timer3 to delay <us> micro-seconds. 
@@ -219,7 +224,11 @@ void TIMER0_Init(void)
 void main (void) 
 {
 
-	char buff[17];
+	// char buff[17];
+	float period;
+
+	//Initialize Timer0 to be used to count the period
+	TIMER0_Init();
 
 	// Configure the LCD
 	LCD_4BIT();
@@ -227,10 +236,61 @@ void main (void)
 	// Display something in the LCD
 	//		  1234567890123456
 	LCDprint("Place clip on   ", 1, 1);
-	LCDprint("Ring finger nail", 2, 1);
+	LCDprint("Ring fingernail", 2, 1);
 
-	waitms(3000);
+	// Wait for user to comply. Give putty a chance to start
+	waitms(1000);
+
+	printf("\x1b[2J"); // Clear screen using ANSI escape sequence.
+
+	printf ("EFM8 Period measurement at pin P2.0 using Timer 0.\n"
+	        "File: %s\n"
+	        "Compiled: %s, %s\n\n",
+	        __FILE__, __DATE__, __TIME__);
+
+
+	 while (1)
+    {
+    	// Reset the counter
+		TL0=0; 
+		TH0=0;
+		TF0=0;
+		overflow_count=0;
+		
+		while(input!=0); // Wait for the signal to be zero
+		while(input!=1); // Wait for the signal to be one
+		TR0=1; // Start the timer
+		while(input!=0) // Wait for the signal to be zero
+		{
+			if(TF0==1) // Did the 16-bit timer overflow?
+			{
+				TF0=0;
+				overflow_count++;
+			}
+		}
+		while(input!=1) // Wait for the signal to be one
+		{
+			if(input==1) // Did the 16-bit timer overflow?
+			{
+				TF0=0;
+				overflow_count++;
+			}
+		}
+		TR0=0; // Stop timer 0, the 24-bit number [overflow_count-TH0-TL0] has the period!
+		period=(overflow_count*65536.0+TH0*256.0+TL0)*(12.0/SYSCLK);
+		// Send the period to the serial port
+		printf( "\rT=%f ms    ", period*1000.0);
+
+    }
+
+    
+ }
+    
 	
+
+
+
+
 
 
 
