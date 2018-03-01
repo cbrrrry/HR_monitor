@@ -1,7 +1,7 @@
 0000              1   ;--------------------------------------------------------
 0000              2   ; File Created by C51
 0000              3   ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-0000              4   ; This file was generated Wed Feb 28 20:27:42 2018
+0000              4   ; This file was generated Thu Mar 01 10:42:18 2018
 0000              5   ;--------------------------------------------------------
                   5   $name hr_monitor
                   6   $optc51 --model-small
@@ -1233,664 +1233,707 @@
 0335           1233   ;unstable                  Allocated with name '_main_unstable_1_52'
 0335           1234   ;bpm_int                   Allocated to registers r2 r3 
 0335           1235   ;count                     Allocated with name '_main_count_1_52'
-0335           1236   ;bpm_string                Allocated with name '_main_bpm_string_1_52'
-0335           1237   ;------------------------------------------------------------
-0335           1238   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:238: void main (void) 
-0335           1239   ;        -----------------------------------------
-0335           1240   ;         function main
-0335           1241   ;        -----------------------------------------
-0335           1242   _main:
-0335           1243   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:244: float mem=0.0;
-0335           1244   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:245: int unstable=0;
-0335           1245   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:249: char * bpm_string=NULL;
-0335 E4        1246            clr     a
-0336 F588      1247            mov     _main_mem_1_52,a
-0338 F589      1248            mov     (_main_mem_1_52 + 1),a
-033A F58A      1249            mov     (_main_mem_1_52 + 2),a
-033C F58B      1250            mov (_main_mem_1_52 + 3),a
-033E F5D8      1251            mov _main_unstable_1_52,a
-0340 F5D9      1252            mov (_main_unstable_1_52 + 1),a
-0342 F578      1253            mov _main_bpm_string_1_52,a
-0344 F579      1254            mov (_main_bpm_string_1_52 + 1),a
-0346 F57A      1255            mov (_main_bpm_string_1_52 + 2),a
-0348           1256   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:252: TIMER0_Init();
-0348 120100    1257            lcall   _TIMER0_Init
-034B           1258   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:255: LCD_4BIT();
-034B 120100    1259            lcall   _LCD_4BIT
-034E           1260   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:259: LCDprint("Place clip on   ", 1, 1);
-034E 75D001    1261            mov     _LCDprint_PARM_2,#0x01
-0351 D2F0      1262            setb    _LCDprint_PARM_3
-0353 90C1C0    1263            mov     dptr,#__str_0
-0356 75F080    1264            mov     b,#0x80
-0359 120100    1265            lcall   _LCDprint
-035C           1266   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:260: LCDprint("Ring fingernail", 2, 1);
-035C 75D002    1267            mov     _LCDprint_PARM_2,#0x02
-035F D2F0      1268            setb    _LCDprint_PARM_3
-0361 90C200    1269            mov     dptr,#__str_1
-0364 75F080    1270            mov     b,#0x80
-0367 120100    1271            lcall   _LCDprint
-036A           1272   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:263: waitms(1000);
-036A 9003E8    1273            mov     dptr,#0x03E8
-036D 120100    1274            lcall   _waitms
-0370           1275   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:265: printf("\x1b[2J"); // Clear screen using ANSI escape sequence.
-0370 7440      1276            mov     a,#__str_2
-0372 C0E0      1277            push    acc
-0374 74C2      1278            mov     a,#(__str_2 >> 8)
-0376 C0E0      1279            push    acc
-0378 7480      1280            mov     a,#0x80
-037A C0E0      1281            push    acc
-037C 120100    1282            lcall   _printf
-037F 1581      1283            dec     sp
-0381 1581      1284            dec     sp
-0383 1581      1285            dec     sp
-0385           1286   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:270: __FILE__, __DATE__, __TIME__);
-0385           1287   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:269: "Compiled: %s, %s\n\n",
-0385 7400      1288            mov     a,#__str_6
-0387 C0E0      1289            push    acc
-0389 74C3      1290            mov     a,#(__str_6 >> 8)
-038B C0E0      1291            push    acc
-038D 7480      1292            mov     a,#0x80
-038F C0E0      1293            push    acc
-0391 7440      1294            mov     a,#__str_5
-0393 C0E0      1295            push    acc
-0395 74C3      1296            mov     a,#(__str_5 >> 8)
-0397 C0E0      1297            push    acc
-0399 7480      1298            mov     a,#0x80
-039B C0E0      1299            push    acc
-039D 7480      1300            mov     a,#__str_4
-039F C0E0      1301            push    acc
-03A1 74C3      1302            mov     a,#(__str_4 >> 8)
-03A3 C0E0      1303            push    acc
-03A5 7480      1304            mov     a,#0x80
-03A7 C0E0      1305            push    acc
-03A9 74C0      1306            mov     a,#__str_3
-03AB C0E0      1307            push    acc
-03AD 74C3      1308            mov     a,#(__str_3 >> 8)
-03AF C0E0      1309            push    acc
-03B1 7480      1310            mov     a,#0x80
-03B3 C0E0      1311            push    acc
-03B5 120100    1312            lcall   _printf
-03B8 E581      1313            mov     a,sp
-03BA 24F4      1314            add     a,#0xf4
-03BC F581      1315            mov     sp,a
-03BE           1316   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:273: while (1)
-03BE           1317   L014033?:
-03BE           1318   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:276: TL0=0; 
-03BE 758A00    1319            mov     _TL0,#0x00
-03C1           1320   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:277: TH0=0;
-03C1 758C00    1321            mov     _TH0,#0x00
-03C4           1322   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:278: TF0=0;
-03C4 C28D      1323            clr     _TF0
-03C6           1324   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:279: overflow_count=0;
-03C6 751000    1325            mov     _overflow_count,#0x00
-03C9           1326   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:282: while(input!=0); // Wait for the signal to be zero
-03C9           1327   L014001?:
-03C9 20A040    1328            jb      _P2_0,L014001?
-03CC           1329   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:283: while(input!=1); // Wait for the signal to be one
-03CC           1330   L014004?:
-03CC 30A080    1331            jnb     _P2_0,L014004?
-03CF           1332   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:285: TR0=1; // Start the timer
-03CF D28C      1333            setb    _TR0
-03D1           1334   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:286: while(input!=0) // Wait for the signal to be zero
-03D1           1335   L014009?:
-03D1 30A000    1336            jnb     _P2_0,L014014?
-03D4           1337   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:288: if(TF0==1) // Did the 16-bit timer overflow?
-03D4           1338   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:290: TF0=0;
-03D4 108D40    1339            jbc     _TF0,L014059?
-03D7 8001      1340            sjmp    L014009?
-03D9           1341   L014059?:
-03D9           1342   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:291: overflow_count++;
-03D9 0510      1343            inc     _overflow_count
-03DB           1344   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:294: while(input!=1) // Wait for the signal to be one
-03DB 8001      1345            sjmp    L014009?
-03DD           1346   L014014?:
-03DD 20A080    1347            jb      _P2_0,L014016?
-03E0           1348   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:296: if(TF0==1) // Did the 16-bit timer overflow?
-03E0           1349   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:298: TF0=0;
-03E0 108DC0    1350            jbc     _TF0,L014061?
-03E3 8001      1351            sjmp    L014014?
-03E5           1352   L014061?:
-03E5           1353   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:299: overflow_count++;
-03E5 0510      1354            inc     _overflow_count
-03E7 8001      1355            sjmp    L014014?
-03E9           1356   L014016?:
-03E9           1357   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:302: TR0=0; // Stop timer 0, the 24-bit number [overflow_count-TH0-TL0] has the period!
-03E9 C28C      1358            clr     _TR0
-03EB           1359   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:303: period=(overflow_count*65536.0+TH0*256.0+TL0)*(12.0/SYSCLK);
-03EB 851082    1360            mov     dpl,_overflow_count
-03EE 120100    1361            lcall   ___uchar2fs
-03F1 AF82      1362            mov     r7,dpl
-03F3 AA83      1363            mov     r2,dph
-03F5 ABF0      1364            mov     r3,b
-03F7 FC        1365            mov     r4,a
-03F8 C007      1366            push    ar7
-03FA C002      1367            push    ar2
-03FC C003      1368            push    ar3
-03FE C004      1369            push    ar4
-0400 900000    1370            mov     dptr,#0x0000
-0403 75F080    1371            mov     b,#0x80
-0406 7447      1372            mov     a,#0x47
-0408 120100    1373            lcall   ___fsmul
-040B AA82      1374            mov     r2,dpl
-040D AB83      1375            mov     r3,dph
-040F ACF0      1376            mov     r4,b
-0411 FD        1377            mov     r5,a
-0412 E581      1378            mov     a,sp
-0414 24FC      1379            add     a,#0xfc
-0416 F581      1380            mov     sp,a
-0418 858C82    1381            mov     dpl,_TH0
-041B C002      1382            push    ar2
-041D C003      1383            push    ar3
-041F C004      1384            push    ar4
-0421 C005      1385            push    ar5
-0423 120100    1386            lcall   ___uchar2fs
-0426 AF82      1387            mov     r7,dpl
-0428 AE83      1388            mov     r6,dph
-042A A8F0      1389            mov     r0,b
-042C F9        1390            mov     r1,a
-042D C007      1391            push    ar7
-042F C006      1392            push    ar6
-0431 C000      1393            push    ar0
-0433 C001      1394            push    ar1
-0435 900000    1395            mov     dptr,#0x0000
-0438 75F080    1396            mov     b,#0x80
-043B 7443      1397            mov     a,#0x43
-043D 120100    1398            lcall   ___fsmul
-0440 AE82      1399            mov     r6,dpl
-0442 AF83      1400            mov     r7,dph
-0444 A8F0      1401            mov     r0,b
-0446 F9        1402            mov     r1,a
-0447 E581      1403            mov     a,sp
-0449 24FC      1404            add     a,#0xfc
-044B F581      1405            mov     sp,a
-044D D005      1406            pop     ar5
-044F D004      1407            pop     ar4
-0451 D003      1408            pop     ar3
-0453 D002      1409            pop     ar2
-0455 C006      1410            push    ar6
-0457 C007      1411            push    ar7
-0459 C000      1412            push    ar0
-045B C001      1413            push    ar1
-045D 8A82      1414            mov     dpl,r2
-045F 8B83      1415            mov     dph,r3
-0461 8CF0      1416            mov     b,r4
-0463 ED        1417            mov     a,r5
-0464 120100    1418            lcall   ___fsadd
-0467 AA82      1419            mov     r2,dpl
-0469 AB83      1420            mov     r3,dph
-046B ACF0      1421            mov     r4,b
-046D FD        1422            mov     r5,a
-046E E581      1423            mov     a,sp
-0470 24FC      1424            add     a,#0xfc
-0472 F581      1425            mov     sp,a
-0474 AE8A      1426            mov     r6,_TL0
-0476 7F00      1427            mov     r7,#0x00
-0478 8E82      1428            mov     dpl,r6
-047A 8F83      1429            mov     dph,r7
-047C C002      1430            push    ar2
-047E C003      1431            push    ar3
-0480 C004      1432            push    ar4
-0482 C005      1433            push    ar5
-0484 120100    1434            lcall   ___sint2fs
-0487 AE82      1435            mov     r6,dpl
-0489 AF83      1436            mov     r7,dph
-048B A8F0      1437            mov     r0,b
-048D F9        1438            mov     r1,a
-048E D005      1439            pop     ar5
-0490 D004      1440            pop     ar4
-0492 D003      1441            pop     ar3
-0494 D002      1442            pop     ar2
-0496 C006      1443            push    ar6
-0498 C007      1444            push    ar7
-049A C000      1445            push    ar0
-049C C001      1446            push    ar1
-049E 8A82      1447            mov     dpl,r2
-04A0 8B83      1448            mov     dph,r3
-04A2 8CF0      1449            mov     b,r4
-04A4 ED        1450            mov     a,r5
-04A5 120100    1451            lcall   ___fsadd
-04A8 AA82      1452            mov     r2,dpl
-04AA AB83      1453            mov     r3,dph
-04AC ACF0      1454            mov     r4,b
-04AE FD        1455            mov     r5,a
-04AF E581      1456            mov     a,sp
-04B1 24FC      1457            add     a,#0xfc
-04B3 F581      1458            mov     sp,a
-04B5 C002      1459            push    ar2
-04B7 C003      1460            push    ar3
-04B9 C004      1461            push    ar4
-04BB C005      1462            push    ar5
-04BD 90F4FC    1463            mov     dptr,#0xF4FC
-04C0 75F032    1464            mov     b,#0x32
-04C3 7434      1465            mov     a,#0x34
-04C5 120100    1466            lcall   ___fsmul
-04C8 858248    1467            mov     _main_period_1_52,dpl
-04CB 858349    1468            mov     (_main_period_1_52 + 1),dph
-04CE 85F04A    1469            mov     (_main_period_1_52 + 2),b
-04D1 F54B      1470            mov     (_main_period_1_52 + 3),a
-04D3 E581      1471            mov     a,sp
-04D5 24FC      1472            add     a,#0xfc
-04D7 F581      1473            mov     sp,a
-04D9           1474   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:305: printf( "\rT=%f ms    ", period*1000.0);
-04D9 C048      1475            push    _main_period_1_52
-04DB C049      1476            push    (_main_period_1_52 + 1)
-04DD C04A      1477            push    (_main_period_1_52 + 2)
-04DF C04B      1478            push    (_main_period_1_52 + 3)
-04E1 900000    1479            mov     dptr,#0x0000
-04E4 75F07A    1480            mov     b,#0x7A
-04E7 7444      1481            mov     a,#0x44
-04E9 120100    1482            lcall   ___fsmul
-04EC AE82      1483            mov     r6,dpl
-04EE AF83      1484            mov     r7,dph
-04F0 A8F0      1485            mov     r0,b
-04F2 F9        1486            mov     r1,a
-04F3 E581      1487            mov     a,sp
-04F5 24FC      1488            add     a,#0xfc
-04F7 F581      1489            mov     sp,a
-04F9 C006      1490            push    ar6
-04FB C007      1491            push    ar7
-04FD C000      1492            push    ar0
-04FF C001      1493            push    ar1
-0501 7400      1494            mov     a,#__str_7
-0503 C0E0      1495            push    acc
-0505 74C7      1496            mov     a,#(__str_7 >> 8)
-0507 C0E0      1497            push    acc
-0509 7480      1498            mov     a,#0x80
-050B C0E0      1499            push    acc
-050D 120100    1500            lcall   _printf
-0510 E581      1501            mov     a,sp
-0512 24F9      1502            add     a,#0xf9
-0514 F581      1503            mov     sp,a
-0516           1504   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:307: bpm = 60.0/period;
-0516 C048      1505            push    _main_period_1_52
-0518 C049      1506            push    (_main_period_1_52 + 1)
-051A C04A      1507            push    (_main_period_1_52 + 2)
-051C C04B      1508            push    (_main_period_1_52 + 3)
-051E 900000    1509            mov     dptr,#0x0000
-0521 75F070    1510            mov     b,#0x70
-0524 7442      1511            mov     a,#0x42
-0526 120100    1512            lcall   ___fsdiv
-0529 AE82      1513            mov     r6,dpl
-052B AF83      1514            mov     r7,dph
-052D A8F0      1515            mov     r0,b
-052F F9        1516            mov     r1,a
-0530 E581      1517            mov     a,sp
-0532 24FC      1518            add     a,#0xfc
-0534 F581      1519            mov     sp,a
-0536           1520   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:309: if(!unstable)
-0536 E5D8      1521            mov     a,_main_unstable_1_52
-0538 45D9      1522            orl     a,(_main_unstable_1_52 + 1)
-053A 6001      1523            jz      L014062?
-053C 020100    1524            ljmp    L014022?
-053F           1525   L014062?:
-053F           1526   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:311: if(bpm >= 50 && bpm <= 130) 
-053F C006      1527            push    ar6
-0541 C007      1528            push    ar7
-0543 C000      1529            push    ar0
-0545 C001      1530            push    ar1
-0547 E4        1531            clr     a
-0548 C0E0      1532            push    acc
-054A C0E0      1533            push    acc
-054C 7448      1534            mov     a,#0x48
-054E C0E0      1535            push    acc
-0550 7442      1536            mov     a,#0x42
-0552 C0E0      1537            push    acc
-0554 8E82      1538            mov     dpl,r6
-0556 8F83      1539            mov     dph,r7
-0558 88F0      1540            mov     b,r0
-055A E9        1541            mov     a,r1
-055B 120100    1542            lcall   ___fslt
-055E AA82      1543            mov     r2,dpl
-0560 E581      1544            mov     a,sp
-0562 24FC      1545            add     a,#0xfc
-0564 F581      1546            mov     sp,a
-0566 D001      1547            pop     ar1
-0568 D000      1548            pop     ar0
-056A D007      1549            pop     ar7
-056C D006      1550            pop     ar6
-056E EA        1551            mov     a,r2
-056F 7001      1552            jnz     L014018?
-0571 C006      1553            push    ar6
-0573 C007      1554            push    ar7
-0575 C000      1555            push    ar0
-0577 C001      1556            push    ar1
-0579 E4        1557            clr     a
-057A C0E0      1558            push    acc
-057C C0E0      1559            push    acc
-057E 7402      1560            mov     a,#0x02
-0580 C0E0      1561            push    acc
-0582 7443      1562            mov     a,#0x43
-0584 C0E0      1563            push    acc
-0586 8E82      1564            mov     dpl,r6
-0588 8F83      1565            mov     dph,r7
-058A 88F0      1566            mov     b,r0
-058C E9        1567            mov     a,r1
-058D 120100    1568            lcall   ___fsgt
-0590 AA82      1569            mov     r2,dpl
-0592 E581      1570            mov     a,sp
-0594 24FC      1571            add     a,#0xfc
-0596 F581      1572            mov     sp,a
-0598 D001      1573            pop     ar1
-059A D000      1574            pop     ar0
-059C D007      1575            pop     ar7
-059E D006      1576            pop     ar6
-05A0 EA        1577            mov     a,r2
-05A1 7001      1578            jnz     L014018?
-05A3           1579   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:312: {mem = bpm; unstable=1;}
-05A3 8E88      1580            mov     _main_mem_1_52,r6
-05A5 8F89      1581            mov     (_main_mem_1_52 + 1),r7
-05A7 888A      1582            mov     (_main_mem_1_52 + 2),r0
-05A9 898B      1583            mov     (_main_mem_1_52 + 3),r1
-05AB 75D801    1584            mov     _main_unstable_1_52,#0x01
-05AE E4        1585            clr     a
-05AF F5D9      1586            mov     (_main_unstable_1_52 + 1),a
-05B1 8001      1587            sjmp    L014022?
-05B3           1588   L014018?:
-05B3           1589   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:314: else {printf("\rNot stable yet"); 
-05B3 74C0      1590            mov     a,#__str_8
-05B5 C0E0      1591            push    acc
-05B7 74C8      1592            mov     a,#(__str_8 >> 8)
-05B9 C0E0      1593            push    acc
-05BB 7480      1594            mov     a,#0x80
-05BD C0E0      1595            push    acc
-05BF 120100    1596            lcall   _printf
-05C2 1581      1597            dec     sp
-05C4 1581      1598            dec     sp
-05C6 1581      1599            dec     sp
-05C8           1600   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:315: LCDprint("HR Not Stable", 2, 1); continue;}
-05C8 75D002    1601            mov     _LCDprint_PARM_2,#0x02
-05CB D2F0      1602            setb    _LCDprint_PARM_3
-05CD 90C900    1603            mov     dptr,#__str_9
-05D0 75F080    1604            mov     b,#0x80
-05D3 120100    1605            lcall   _LCDprint
-05D6 020100    1606            ljmp    L014033?
-05D9           1607   L014022?:
-05D9           1608   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:319: if(bpm >= 50 && bpm <= 130 && ((bpm-mem) < 40 || (mem-bpm) < 40))
-05D9 C006      1609            push    ar6
-05DB C007      1610            push    ar7
-05DD C000      1611            push    ar0
-05DF C001      1612            push    ar1
-05E1 E4        1613            clr     a
-05E2 C0E0      1614            push    acc
-05E4 C0E0      1615            push    acc
-05E6 7448      1616            mov     a,#0x48
-05E8 C0E0      1617            push    acc
-05EA 7442      1618            mov     a,#0x42
-05EC C0E0      1619            push    acc
-05EE 8E82      1620            mov     dpl,r6
-05F0 8F83      1621            mov     dph,r7
-05F2 88F0      1622            mov     b,r0
-05F4 E9        1623            mov     a,r1
-05F5 120100    1624            lcall   ___fslt
-05F8 AA82      1625            mov     r2,dpl
-05FA E581      1626            mov     a,sp
-05FC 24FC      1627            add     a,#0xfc
-05FE F581      1628            mov     sp,a
-0600 D001      1629            pop     ar1
-0602 D000      1630            pop     ar0
-0604 D007      1631            pop     ar7
-0606 D006      1632            pop     ar6
-0608 EA        1633            mov     a,r2
-0609 6001      1634            jz      L014065?
-060B 020100    1635            ljmp    L014024?
-060E           1636   L014065?:
-060E C006      1637            push    ar6
-0610 C007      1638            push    ar7
-0612 C000      1639            push    ar0
-0614 C001      1640            push    ar1
-0616 E4        1641            clr     a
-0617 C0E0      1642            push    acc
-0619 C0E0      1643            push    acc
-061B 7402      1644            mov     a,#0x02
-061D C0E0      1645            push    acc
-061F 7443      1646            mov     a,#0x43
-0621 C0E0      1647            push    acc
-0623 8E82      1648            mov     dpl,r6
-0625 8F83      1649            mov     dph,r7
-0627 88F0      1650            mov     b,r0
-0629 E9        1651            mov     a,r1
-062A 120100    1652            lcall   ___fsgt
-062D AA82      1653            mov     r2,dpl
-062F E581      1654            mov     a,sp
-0631 24FC      1655            add     a,#0xfc
-0633 F581      1656            mov     sp,a
-0635 D001      1657            pop     ar1
-0637 D000      1658            pop     ar0
-0639 D007      1659            pop     ar7
-063B D006      1660            pop     ar6
-063D EA        1661            mov     a,r2
-063E 6001      1662            jz      L014066?
-0640 020100    1663            ljmp    L014024?
-0643           1664   L014066?:
-0643 C006      1665            push    ar6
-0645 C007      1666            push    ar7
-0647 C000      1667            push    ar0
-0649 C001      1668            push    ar1
-064B C088      1669            push    _main_mem_1_52
-064D C089      1670            push    (_main_mem_1_52 + 1)
-064F C08A      1671            push    (_main_mem_1_52 + 2)
-0651 C08B      1672            push    (_main_mem_1_52 + 3)
-0653 8E82      1673            mov     dpl,r6
-0655 8F83      1674            mov     dph,r7
-0657 88F0      1675            mov     b,r0
-0659 E9        1676            mov     a,r1
-065A 120100    1677            lcall   ___fssub
-065D AA82      1678            mov     r2,dpl
-065F AB83      1679            mov     r3,dph
-0661 ACF0      1680            mov     r4,b
-0663 FD        1681            mov     r5,a
-0664 E581      1682            mov     a,sp
-0666 24FC      1683            add     a,#0xfc
-0668 F581      1684            mov     sp,a
-066A E4        1685            clr     a
-066B C0E0      1686            push    acc
-066D C0E0      1687            push    acc
-066F 7420      1688            mov     a,#0x20
-0671 C0E0      1689            push    acc
-0673 7442      1690            mov     a,#0x42
-0675 C0E0      1691            push    acc
-0677 8A82      1692            mov     dpl,r2
-0679 8B83      1693            mov     dph,r3
-067B 8CF0      1694            mov     b,r4
-067D ED        1695            mov     a,r5
-067E 120100    1696            lcall   ___fslt
-0681 AA82      1697            mov     r2,dpl
-0683 E581      1698            mov     a,sp
-0685 24FC      1699            add     a,#0xfc
-0687 F581      1700            mov     sp,a
-0689 D001      1701            pop     ar1
-068B D000      1702            pop     ar0
-068D D007      1703            pop     ar7
-068F D006      1704            pop     ar6
-0691 EA        1705            mov     a,r2
-0692 7001      1706            jnz     L014023?
-0694 C006      1707            push    ar6
-0696 C007      1708            push    ar7
-0698 C000      1709            push    ar0
-069A C001      1710            push    ar1
-069C C006      1711            push    ar6
-069E C007      1712            push    ar7
-06A0 C000      1713            push    ar0
-06A2 C001      1714            push    ar1
-06A4 858882    1715            mov     dpl,_main_mem_1_52
-06A7 858983    1716            mov     dph,(_main_mem_1_52 + 1)
-06AA 858AF0    1717            mov     b,(_main_mem_1_52 + 2)
-06AD E58B      1718            mov     a,(_main_mem_1_52 + 3)
-06AF 120100    1719            lcall   ___fssub
-06B2 AA82      1720            mov     r2,dpl
-06B4 AB83      1721            mov     r3,dph
-06B6 ACF0      1722            mov     r4,b
-06B8 FD        1723            mov     r5,a
-06B9 E581      1724            mov     a,sp
-06BB 24FC      1725            add     a,#0xfc
-06BD F581      1726            mov     sp,a
-06BF E4        1727            clr     a
-06C0 C0E0      1728            push    acc
-06C2 C0E0      1729            push    acc
-06C4 7420      1730            mov     a,#0x20
-06C6 C0E0      1731            push    acc
-06C8 7442      1732            mov     a,#0x42
-06CA C0E0      1733            push    acc
-06CC 8A82      1734            mov     dpl,r2
-06CE 8B83      1735            mov     dph,r3
-06D0 8CF0      1736            mov     b,r4
-06D2 ED        1737            mov     a,r5
-06D3 120100    1738            lcall   ___fslt
-06D6 AA82      1739            mov     r2,dpl
-06D8 E581      1740            mov     a,sp
-06DA 24FC      1741            add     a,#0xfc
-06DC F581      1742            mov     sp,a
-06DE D001      1743            pop     ar1
-06E0 D000      1744            pop     ar0
-06E2 D007      1745            pop     ar7
-06E4 D006      1746            pop     ar6
-06E6 EA        1747            mov     a,r2
-06E7 6001      1748            jz      L014024?
-06E9           1749   L014023?:
-06E9           1750   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:321: mem = bpm;
-06E9 8E88      1751            mov     _main_mem_1_52,r6
-06EB 8F89      1752            mov     (_main_mem_1_52 + 1),r7
-06ED 888A      1753            mov     (_main_mem_1_52 + 2),r0
-06EF 898B      1754            mov     (_main_mem_1_52 + 3),r1
-06F1 8001      1755            sjmp    L014025?
-06F3           1756   L014024?:
-06F3           1757   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:323: else bpm = mem;
-06F3 AE88      1758            mov     r6,_main_mem_1_52
-06F5 AF89      1759            mov     r7,(_main_mem_1_52 + 1)
-06F7 A88A      1760            mov     r0,(_main_mem_1_52 + 2)
-06F9 A98B      1761            mov     r1,(_main_mem_1_52 + 3)
-06FB           1762   L014025?:
-06FB           1763   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:326: bpm_int = (int) bpm;
-06FB 8E82      1764            mov     dpl,r6
-06FD 8F83      1765            mov     dph,r7
-06FF 88F0      1766            mov     b,r0
-0701 E9        1767            mov     a,r1
-0702 120100    1768            lcall   ___fs2sint
-0705 AA82      1769            mov     r2,dpl
-0707 AB83      1770            mov     r3,dph
-0709           1771   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:327: printf( "\rperiod=%fs    heart rate=%dbpm     %s" , period, bpm_int,bpm_string);
-0709 C002      1772            push    ar2
-070B C003      1773            push    ar3
-070D C078      1774            push    _main_bpm_string_1_52
-070F C079      1775            push    (_main_bpm_string_1_52 + 1)
-0711 C07A      1776            push    (_main_bpm_string_1_52 + 2)
-0713 C002      1777            push    ar2
-0715 C003      1778            push    ar3
-0717 C048      1779            push    _main_period_1_52
-0719 C049      1780            push    (_main_period_1_52 + 1)
-071B C04A      1781            push    (_main_period_1_52 + 2)
-071D C04B      1782            push    (_main_period_1_52 + 3)
-071F 7400      1783            mov     a,#__str_10
-0721 C0E0      1784            push    acc
-0723 74CB      1785            mov     a,#(__str_10 >> 8)
-0725 C0E0      1786            push    acc
-0727 7480      1787            mov     a,#0x80
-0729 C0E0      1788            push    acc
-072B 120100    1789            lcall   _printf
-072E E581      1790            mov     a,sp
-0730 24F4      1791            add     a,#0xf4
-0732 F581      1792            mov     sp,a
-0734 D003      1793            pop     ar3
-0736 D002      1794            pop     ar2
-0738           1795   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:331: while(bpm_int)
-0738 E4        1796            clr     a
-0739 F528      1797            mov     _main_count_1_52,a
-073B F529      1798            mov     (_main_count_1_52 + 1),a
-073D           1799   L014029?:
-073D EA        1800            mov     a,r2
-073E 4B        1801            orl     a,r3
-073F 6001      1802            jz      L014031?
-0741           1803   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:333: bpm_string[count] = 48+bpm_int%10;
-0741 E528      1804            mov     a,_main_count_1_52
-0743 2578      1805            add     a,_main_bpm_string_1_52
-0745 FE        1806            mov     r6,a
-0746 E529      1807            mov     a,(_main_count_1_52 + 1)
-0748 3579      1808            addc    a,(_main_bpm_string_1_52 + 1)
-074A FF        1809            mov     r7,a
-074B A87A      1810            mov     r0,(_main_bpm_string_1_52 + 2)
-074D 75000A    1811            mov     __modsint_PARM_2,#0x0A
-0750 E4        1812            clr     a
-0751 F501      1813            mov     (__modsint_PARM_2 + 1),a
-0753 8A82      1814            mov     dpl,r2
-0755 8B83      1815            mov     dph,r3
-0757 C002      1816            push    ar2
-0759 C003      1817            push    ar3
-075B C006      1818            push    ar6
-075D C007      1819            push    ar7
-075F C000      1820            push    ar0
-0761 120100    1821            lcall   __modsint
-0764 A982      1822            mov     r1,dpl
-0766 D000      1823            pop     ar0
-0768 D007      1824            pop     ar7
-076A D006      1825            pop     ar6
-076C D003      1826            pop     ar3
-076E D002      1827            pop     ar2
-0770 7430      1828            mov     a,#0x30
-0772 29        1829            add     a,r1
-0773 8E82      1830            mov     dpl,r6
-0775 8F83      1831            mov     dph,r7
-0777 88F0      1832            mov     b,r0
-0779 120100    1833            lcall   __gptrput
-077C           1834   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:334: bpm_int /= 10;
-077C 75000A    1835            mov     __divsint_PARM_2,#0x0A
-077F E4        1836            clr     a
-0780 F501      1837            mov     (__divsint_PARM_2 + 1),a
-0782 8A82      1838            mov     dpl,r2
-0784 8B83      1839            mov     dph,r3
-0786 120100    1840            lcall   __divsint
-0789 AA82      1841            mov     r2,dpl
-078B AB83      1842            mov     r3,dph
-078D           1843   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:335: count++;
-078D 0528      1844            inc     _main_count_1_52
-078F E4        1845            clr     a
-0790 B52840    1846            cjne    a,_main_count_1_52,L014029?
-0793 0529      1847            inc     (_main_count_1_52 + 1)
-0795 8001      1848            sjmp    L014029?
-0797           1849   L014031?:
-0797           1850   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:337: bpm_string[count]='\0';
-0797 E528      1851            mov     a,_main_count_1_52
-0799 2578      1852            add     a,_main_bpm_string_1_52
-079B FA        1853            mov     r2,a
-079C E529      1854            mov     a,(_main_count_1_52 + 1)
-079E 3579      1855            addc    a,(_main_bpm_string_1_52 + 1)
-07A0 FB        1856            mov     r3,a
-07A1 AC7A      1857            mov     r4,(_main_bpm_string_1_52 + 2)
-07A3 8A82      1858            mov     dpl,r2
-07A5 8B83      1859            mov     dph,r3
-07A7 8CF0      1860            mov     b,r4
-07A9 E4        1861            clr     a
-07AA 120100    1862            lcall   __gptrput
-07AD           1863   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:339: LCDprint_inv(bpm_string, 2, 1);
-07AD 758002    1864            mov     _LCDprint_inv_PARM_2,#0x02
-07B0 D2A0      1865            setb    _LCDprint_inv_PARM_3
-07B2 857882    1866            mov     dpl,_main_bpm_string_1_52
-07B5 857983    1867            mov     dph,(_main_bpm_string_1_52 + 1)
-07B8 857AF0    1868            mov     b,(_main_bpm_string_1_52 + 2)
-07BB 120100    1869            lcall   _LCDprint_inv
-07BE 020100    1870            ljmp    L014033?
-07C1           1871            rseg R_CSEG
-07C1           1872   
-0000           1873            rseg R_XINIT
-0000           1874   
-0000           1875            rseg R_CONST
-0000           1876   __str_0:
-0000 506C6163  1877            db 'Place clip on   '
+0335           1236   ;sum                       Allocated to registers r2 r3 r4 r5 
+0335           1237   ;bpm_string                Allocated with name '_main_bpm_string_1_52'
+0335           1238   ;------------------------------------------------------------
+0335           1239   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:238: void main (void) 
+0335           1240   ;        -----------------------------------------
+0335           1241   ;         function main
+0335           1242   ;        -----------------------------------------
+0335           1243   _main:
+0335           1244   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:244: float mem=0.0;
+0335           1245   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:245: int unstable=0;
+0335           1246   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:249: char * bpm_string=NULL;
+0335 E4        1247            clr     a
+0336 F588      1248            mov     _main_mem_1_52,a
+0338 F589      1249            mov     (_main_mem_1_52 + 1),a
+033A F58A      1250            mov     (_main_mem_1_52 + 2),a
+033C F58B      1251            mov (_main_mem_1_52 + 3),a
+033E F5D8      1252            mov _main_unstable_1_52,a
+0340 F5D9      1253            mov (_main_unstable_1_52 + 1),a
+0342 F578      1254            mov _main_bpm_string_1_52,a
+0344 F579      1255            mov (_main_bpm_string_1_52 + 1),a
+0346 F57A      1256            mov (_main_bpm_string_1_52 + 2),a
+0348           1257   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:252: TIMER0_Init();
+0348 120100    1258            lcall   _TIMER0_Init
+034B           1259   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:255: LCD_4BIT();
+034B 120100    1260            lcall   _LCD_4BIT
+034E           1261   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:259: LCDprint("Place clip on   ", 1, 1);
+034E 75D001    1262            mov     _LCDprint_PARM_2,#0x01
+0351 D2F0      1263            setb    _LCDprint_PARM_3
+0353 90C1C0    1264            mov     dptr,#__str_0
+0356 75F080    1265            mov     b,#0x80
+0359 120100    1266            lcall   _LCDprint
+035C           1267   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:260: LCDprint("Ring fingernail", 2, 1);
+035C 75D002    1268            mov     _LCDprint_PARM_2,#0x02
+035F D2F0      1269            setb    _LCDprint_PARM_3
+0361 90C200    1270            mov     dptr,#__str_1
+0364 75F080    1271            mov     b,#0x80
+0367 120100    1272            lcall   _LCDprint
+036A           1273   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:263: waitms(1000);
+036A 9003E8    1274            mov     dptr,#0x03E8
+036D 120100    1275            lcall   _waitms
+0370           1276   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:265: printf("\x1b[2J"); // Clear screen using ANSI escape sequence.
+0370 7440      1277            mov     a,#__str_2
+0372 C0E0      1278            push    acc
+0374 74C2      1279            mov     a,#(__str_2 >> 8)
+0376 C0E0      1280            push    acc
+0378 7480      1281            mov     a,#0x80
+037A C0E0      1282            push    acc
+037C 120100    1283            lcall   _printf
+037F 1581      1284            dec     sp
+0381 1581      1285            dec     sp
+0383 1581      1286            dec     sp
+0385           1287   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:270: __FILE__, __DATE__, __TIME__);
+0385           1288   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:269: "Compiled: %s, %s\n\n",
+0385 7400      1289            mov     a,#__str_6
+0387 C0E0      1290            push    acc
+0389 74C3      1291            mov     a,#(__str_6 >> 8)
+038B C0E0      1292            push    acc
+038D 7480      1293            mov     a,#0x80
+038F C0E0      1294            push    acc
+0391 7440      1295            mov     a,#__str_5
+0393 C0E0      1296            push    acc
+0395 74C3      1297            mov     a,#(__str_5 >> 8)
+0397 C0E0      1298            push    acc
+0399 7480      1299            mov     a,#0x80
+039B C0E0      1300            push    acc
+039D 7480      1301            mov     a,#__str_4
+039F C0E0      1302            push    acc
+03A1 74C3      1303            mov     a,#(__str_4 >> 8)
+03A3 C0E0      1304            push    acc
+03A5 7480      1305            mov     a,#0x80
+03A7 C0E0      1306            push    acc
+03A9 74C0      1307            mov     a,#__str_3
+03AB C0E0      1308            push    acc
+03AD 74C3      1309            mov     a,#(__str_3 >> 8)
+03AF C0E0      1310            push    acc
+03B1 7480      1311            mov     a,#0x80
+03B3 C0E0      1312            push    acc
+03B5 120100    1313            lcall   _printf
+03B8 E581      1314            mov     a,sp
+03BA 24F4      1315            add     a,#0xf4
+03BC F581      1316            mov     sp,a
+03BE           1317   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:273: while (1)
+03BE           1318   L014033?:
+03BE           1319   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:276: TL0=0; 
+03BE 758A00    1320            mov     _TL0,#0x00
+03C1           1321   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:277: TH0=0;
+03C1 758C00    1322            mov     _TH0,#0x00
+03C4           1323   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:278: TF0=0;
+03C4 C28D      1324            clr     _TF0
+03C6           1325   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:279: overflow_count=0;
+03C6 751000    1326            mov     _overflow_count,#0x00
+03C9           1327   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:282: while(input!=0); // Wait for the signal to be zero
+03C9           1328   L014001?:
+03C9 20A040    1329            jb      _P2_0,L014001?
+03CC           1330   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:283: while(input!=1); // Wait for the signal to be one
+03CC           1331   L014004?:
+03CC 30A080    1332            jnb     _P2_0,L014004?
+03CF           1333   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:285: TR0=1; // Start the timer
+03CF D28C      1334            setb    _TR0
+03D1           1335   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:286: while(input!=0) // Wait for the signal to be zero
+03D1           1336   L014009?:
+03D1 30A000    1337            jnb     _P2_0,L014014?
+03D4           1338   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:288: if(TF0==1) // Did the 16-bit timer overflow?
+03D4           1339   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:290: TF0=0;
+03D4 108D40    1340            jbc     _TF0,L014059?
+03D7 8001      1341            sjmp    L014009?
+03D9           1342   L014059?:
+03D9           1343   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:291: overflow_count++;
+03D9 0510      1344            inc     _overflow_count
+03DB           1345   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:294: while(input!=1) // Wait for the signal to be one
+03DB 8001      1346            sjmp    L014009?
+03DD           1347   L014014?:
+03DD 20A080    1348            jb      _P2_0,L014016?
+03E0           1349   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:296: if(TF0==1) // Did the 16-bit timer overflow?
+03E0           1350   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:298: TF0=0;
+03E0 108DC0    1351            jbc     _TF0,L014061?
+03E3 8001      1352            sjmp    L014014?
+03E5           1353   L014061?:
+03E5           1354   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:299: overflow_count++;
+03E5 0510      1355            inc     _overflow_count
+03E7 8001      1356            sjmp    L014014?
+03E9           1357   L014016?:
+03E9           1358   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:302: TR0=0; // Stop timer 0, the 24-bit number [overflow_count-TH0-TL0] has the period!
+03E9 C28C      1359            clr     _TR0
+03EB           1360   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:303: period=(overflow_count*65536.0+TH0*256.0+TL0)*(12.0/SYSCLK);
+03EB 851082    1361            mov     dpl,_overflow_count
+03EE 120100    1362            lcall   ___uchar2fs
+03F1 AF82      1363            mov     r7,dpl
+03F3 AA83      1364            mov     r2,dph
+03F5 ABF0      1365            mov     r3,b
+03F7 FC        1366            mov     r4,a
+03F8 C007      1367            push    ar7
+03FA C002      1368            push    ar2
+03FC C003      1369            push    ar3
+03FE C004      1370            push    ar4
+0400 900000    1371            mov     dptr,#0x0000
+0403 75F080    1372            mov     b,#0x80
+0406 7447      1373            mov     a,#0x47
+0408 120100    1374            lcall   ___fsmul
+040B AA82      1375            mov     r2,dpl
+040D AB83      1376            mov     r3,dph
+040F ACF0      1377            mov     r4,b
+0411 FD        1378            mov     r5,a
+0412 E581      1379            mov     a,sp
+0414 24FC      1380            add     a,#0xfc
+0416 F581      1381            mov     sp,a
+0418 858C82    1382            mov     dpl,_TH0
+041B C002      1383            push    ar2
+041D C003      1384            push    ar3
+041F C004      1385            push    ar4
+0421 C005      1386            push    ar5
+0423 120100    1387            lcall   ___uchar2fs
+0426 AF82      1388            mov     r7,dpl
+0428 AE83      1389            mov     r6,dph
+042A A8F0      1390            mov     r0,b
+042C F9        1391            mov     r1,a
+042D C007      1392            push    ar7
+042F C006      1393            push    ar6
+0431 C000      1394            push    ar0
+0433 C001      1395            push    ar1
+0435 900000    1396            mov     dptr,#0x0000
+0438 75F080    1397            mov     b,#0x80
+043B 7443      1398            mov     a,#0x43
+043D 120100    1399            lcall   ___fsmul
+0440 AE82      1400            mov     r6,dpl
+0442 AF83      1401            mov     r7,dph
+0444 A8F0      1402            mov     r0,b
+0446 F9        1403            mov     r1,a
+0447 E581      1404            mov     a,sp
+0449 24FC      1405            add     a,#0xfc
+044B F581      1406            mov     sp,a
+044D D005      1407            pop     ar5
+044F D004      1408            pop     ar4
+0451 D003      1409            pop     ar3
+0453 D002      1410            pop     ar2
+0455 C006      1411            push    ar6
+0457 C007      1412            push    ar7
+0459 C000      1413            push    ar0
+045B C001      1414            push    ar1
+045D 8A82      1415            mov     dpl,r2
+045F 8B83      1416            mov     dph,r3
+0461 8CF0      1417            mov     b,r4
+0463 ED        1418            mov     a,r5
+0464 120100    1419            lcall   ___fsadd
+0467 AA82      1420            mov     r2,dpl
+0469 AB83      1421            mov     r3,dph
+046B ACF0      1422            mov     r4,b
+046D FD        1423            mov     r5,a
+046E E581      1424            mov     a,sp
+0470 24FC      1425            add     a,#0xfc
+0472 F581      1426            mov     sp,a
+0474 AE8A      1427            mov     r6,_TL0
+0476 7F00      1428            mov     r7,#0x00
+0478 8E82      1429            mov     dpl,r6
+047A 8F83      1430            mov     dph,r7
+047C C002      1431            push    ar2
+047E C003      1432            push    ar3
+0480 C004      1433            push    ar4
+0482 C005      1434            push    ar5
+0484 120100    1435            lcall   ___sint2fs
+0487 AE82      1436            mov     r6,dpl
+0489 AF83      1437            mov     r7,dph
+048B A8F0      1438            mov     r0,b
+048D F9        1439            mov     r1,a
+048E D005      1440            pop     ar5
+0490 D004      1441            pop     ar4
+0492 D003      1442            pop     ar3
+0494 D002      1443            pop     ar2
+0496 C006      1444            push    ar6
+0498 C007      1445            push    ar7
+049A C000      1446            push    ar0
+049C C001      1447            push    ar1
+049E 8A82      1448            mov     dpl,r2
+04A0 8B83      1449            mov     dph,r3
+04A2 8CF0      1450            mov     b,r4
+04A4 ED        1451            mov     a,r5
+04A5 120100    1452            lcall   ___fsadd
+04A8 AA82      1453            mov     r2,dpl
+04AA AB83      1454            mov     r3,dph
+04AC ACF0      1455            mov     r4,b
+04AE FD        1456            mov     r5,a
+04AF E581      1457            mov     a,sp
+04B1 24FC      1458            add     a,#0xfc
+04B3 F581      1459            mov     sp,a
+04B5 C002      1460            push    ar2
+04B7 C003      1461            push    ar3
+04B9 C004      1462            push    ar4
+04BB C005      1463            push    ar5
+04BD 90F4FC    1464            mov     dptr,#0xF4FC
+04C0 75F032    1465            mov     b,#0x32
+04C3 7434      1466            mov     a,#0x34
+04C5 120100    1467            lcall   ___fsmul
+04C8 858248    1468            mov     _main_period_1_52,dpl
+04CB 858349    1469            mov     (_main_period_1_52 + 1),dph
+04CE 85F04A    1470            mov     (_main_period_1_52 + 2),b
+04D1 F54B      1471            mov     (_main_period_1_52 + 3),a
+04D3 E581      1472            mov     a,sp
+04D5 24FC      1473            add     a,#0xfc
+04D7 F581      1474            mov     sp,a
+04D9           1475   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:305: printf( "\rT=%f ms    ", period*1000.0);
+04D9 C048      1476            push    _main_period_1_52
+04DB C049      1477            push    (_main_period_1_52 + 1)
+04DD C04A      1478            push    (_main_period_1_52 + 2)
+04DF C04B      1479            push    (_main_period_1_52 + 3)
+04E1 900000    1480            mov     dptr,#0x0000
+04E4 75F07A    1481            mov     b,#0x7A
+04E7 7444      1482            mov     a,#0x44
+04E9 120100    1483            lcall   ___fsmul
+04EC AE82      1484            mov     r6,dpl
+04EE AF83      1485            mov     r7,dph
+04F0 A8F0      1486            mov     r0,b
+04F2 F9        1487            mov     r1,a
+04F3 E581      1488            mov     a,sp
+04F5 24FC      1489            add     a,#0xfc
+04F7 F581      1490            mov     sp,a
+04F9 C006      1491            push    ar6
+04FB C007      1492            push    ar7
+04FD C000      1493            push    ar0
+04FF C001      1494            push    ar1
+0501 7400      1495            mov     a,#__str_7
+0503 C0E0      1496            push    acc
+0505 74C7      1497            mov     a,#(__str_7 >> 8)
+0507 C0E0      1498            push    acc
+0509 7480      1499            mov     a,#0x80
+050B C0E0      1500            push    acc
+050D 120100    1501            lcall   _printf
+0510 E581      1502            mov     a,sp
+0512 24F9      1503            add     a,#0xf9
+0514 F581      1504            mov     sp,a
+0516           1505   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:307: bpm = 60.0/period;
+0516 C048      1506            push    _main_period_1_52
+0518 C049      1507            push    (_main_period_1_52 + 1)
+051A C04A      1508            push    (_main_period_1_52 + 2)
+051C C04B      1509            push    (_main_period_1_52 + 3)
+051E 900000    1510            mov     dptr,#0x0000
+0521 75F070    1511            mov     b,#0x70
+0524 7442      1512            mov     a,#0x42
+0526 120100    1513            lcall   ___fsdiv
+0529 AE82      1514            mov     r6,dpl
+052B AF83      1515            mov     r7,dph
+052D A8F0      1516            mov     r0,b
+052F F9        1517            mov     r1,a
+0530 E581      1518            mov     a,sp
+0532 24FC      1519            add     a,#0xfc
+0534 F581      1520            mov     sp,a
+0536           1521   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:309: if(!unstable)
+0536 E5D8      1522            mov     a,_main_unstable_1_52
+0538 45D9      1523            orl     a,(_main_unstable_1_52 + 1)
+053A 6001      1524            jz      L014062?
+053C 020100    1525            ljmp    L014022?
+053F           1526   L014062?:
+053F           1527   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:311: if(bpm >= 40 && bpm <= 180) 
+053F C006      1528            push    ar6
+0541 C007      1529            push    ar7
+0543 C000      1530            push    ar0
+0545 C001      1531            push    ar1
+0547 E4        1532            clr     a
+0548 C0E0      1533            push    acc
+054A C0E0      1534            push    acc
+054C 7420      1535            mov     a,#0x20
+054E C0E0      1536            push    acc
+0550 7442      1537            mov     a,#0x42
+0552 C0E0      1538            push    acc
+0554 8E82      1539            mov     dpl,r6
+0556 8F83      1540            mov     dph,r7
+0558 88F0      1541            mov     b,r0
+055A E9        1542            mov     a,r1
+055B 120100    1543            lcall   ___fslt
+055E AA82      1544            mov     r2,dpl
+0560 E581      1545            mov     a,sp
+0562 24FC      1546            add     a,#0xfc
+0564 F581      1547            mov     sp,a
+0566 D001      1548            pop     ar1
+0568 D000      1549            pop     ar0
+056A D007      1550            pop     ar7
+056C D006      1551            pop     ar6
+056E EA        1552            mov     a,r2
+056F 7001      1553            jnz     L014018?
+0571 C006      1554            push    ar6
+0573 C007      1555            push    ar7
+0575 C000      1556            push    ar0
+0577 C001      1557            push    ar1
+0579 E4        1558            clr     a
+057A C0E0      1559            push    acc
+057C C0E0      1560            push    acc
+057E 7434      1561            mov     a,#0x34
+0580 C0E0      1562            push    acc
+0582 7443      1563            mov     a,#0x43
+0584 C0E0      1564            push    acc
+0586 8E82      1565            mov     dpl,r6
+0588 8F83      1566            mov     dph,r7
+058A 88F0      1567            mov     b,r0
+058C E9        1568            mov     a,r1
+058D 120100    1569            lcall   ___fsgt
+0590 AA82      1570            mov     r2,dpl
+0592 E581      1571            mov     a,sp
+0594 24FC      1572            add     a,#0xfc
+0596 F581      1573            mov     sp,a
+0598 D001      1574            pop     ar1
+059A D000      1575            pop     ar0
+059C D007      1576            pop     ar7
+059E D006      1577            pop     ar6
+05A0 EA        1578            mov     a,r2
+05A1 7001      1579            jnz     L014018?
+05A3           1580   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:312: {mem = bpm; unstable=1;}
+05A3 8E88      1581            mov     _main_mem_1_52,r6
+05A5 8F89      1582            mov     (_main_mem_1_52 + 1),r7
+05A7 888A      1583            mov     (_main_mem_1_52 + 2),r0
+05A9 898B      1584            mov     (_main_mem_1_52 + 3),r1
+05AB 75D801    1585            mov     _main_unstable_1_52,#0x01
+05AE E4        1586            clr     a
+05AF F5D9      1587            mov     (_main_unstable_1_52 + 1),a
+05B1 8001      1588            sjmp    L014022?
+05B3           1589   L014018?:
+05B3           1590   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:314: else {printf("\rNot stable yet"); 
+05B3 74C0      1591            mov     a,#__str_8
+05B5 C0E0      1592            push    acc
+05B7 74C8      1593            mov     a,#(__str_8 >> 8)
+05B9 C0E0      1594            push    acc
+05BB 7480      1595            mov     a,#0x80
+05BD C0E0      1596            push    acc
+05BF 120100    1597            lcall   _printf
+05C2 1581      1598            dec     sp
+05C4 1581      1599            dec     sp
+05C6 1581      1600            dec     sp
+05C8           1601   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:315: LCDprint("HR Not Stable", 2, 1); continue;}
+05C8 75D002    1602            mov     _LCDprint_PARM_2,#0x02
+05CB D2F0      1603            setb    _LCDprint_PARM_3
+05CD 90C900    1604            mov     dptr,#__str_9
+05D0 75F080    1605            mov     b,#0x80
+05D3 120100    1606            lcall   _LCDprint
+05D6 020100    1607            ljmp    L014033?
+05D9           1608   L014022?:
+05D9           1609   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:319: if(bpm >= 40 && bpm <= 180 && ((bpm-mem) < 40 || (mem-bpm) < 40))
+05D9 C006      1610            push    ar6
+05DB C007      1611            push    ar7
+05DD C000      1612            push    ar0
+05DF C001      1613            push    ar1
+05E1 E4        1614            clr     a
+05E2 C0E0      1615            push    acc
+05E4 C0E0      1616            push    acc
+05E6 7420      1617            mov     a,#0x20
+05E8 C0E0      1618            push    acc
+05EA 7442      1619            mov     a,#0x42
+05EC C0E0      1620            push    acc
+05EE 8E82      1621            mov     dpl,r6
+05F0 8F83      1622            mov     dph,r7
+05F2 88F0      1623            mov     b,r0
+05F4 E9        1624            mov     a,r1
+05F5 120100    1625            lcall   ___fslt
+05F8 AA82      1626            mov     r2,dpl
+05FA E581      1627            mov     a,sp
+05FC 24FC      1628            add     a,#0xfc
+05FE F581      1629            mov     sp,a
+0600 D001      1630            pop     ar1
+0602 D000      1631            pop     ar0
+0604 D007      1632            pop     ar7
+0606 D006      1633            pop     ar6
+0608 EA        1634            mov     a,r2
+0609 6001      1635            jz      L014065?
+060B 020100    1636            ljmp    L014024?
+060E           1637   L014065?:
+060E C006      1638            push    ar6
+0610 C007      1639            push    ar7
+0612 C000      1640            push    ar0
+0614 C001      1641            push    ar1
+0616 E4        1642            clr     a
+0617 C0E0      1643            push    acc
+0619 C0E0      1644            push    acc
+061B 7434      1645            mov     a,#0x34
+061D C0E0      1646            push    acc
+061F 7443      1647            mov     a,#0x43
+0621 C0E0      1648            push    acc
+0623 8E82      1649            mov     dpl,r6
+0625 8F83      1650            mov     dph,r7
+0627 88F0      1651            mov     b,r0
+0629 E9        1652            mov     a,r1
+062A 120100    1653            lcall   ___fsgt
+062D AA82      1654            mov     r2,dpl
+062F E581      1655            mov     a,sp
+0631 24FC      1656            add     a,#0xfc
+0633 F581      1657            mov     sp,a
+0635 D001      1658            pop     ar1
+0637 D000      1659            pop     ar0
+0639 D007      1660            pop     ar7
+063B D006      1661            pop     ar6
+063D EA        1662            mov     a,r2
+063E 6001      1663            jz      L014066?
+0640 020100    1664            ljmp    L014024?
+0643           1665   L014066?:
+0643 C006      1666            push    ar6
+0645 C007      1667            push    ar7
+0647 C000      1668            push    ar0
+0649 C001      1669            push    ar1
+064B C088      1670            push    _main_mem_1_52
+064D C089      1671            push    (_main_mem_1_52 + 1)
+064F C08A      1672            push    (_main_mem_1_52 + 2)
+0651 C08B      1673            push    (_main_mem_1_52 + 3)
+0653 8E82      1674            mov     dpl,r6
+0655 8F83      1675            mov     dph,r7
+0657 88F0      1676            mov     b,r0
+0659 E9        1677            mov     a,r1
+065A 120100    1678            lcall   ___fssub
+065D AA82      1679            mov     r2,dpl
+065F AB83      1680            mov     r3,dph
+0661 ACF0      1681            mov     r4,b
+0663 FD        1682            mov     r5,a
+0664 E581      1683            mov     a,sp
+0666 24FC      1684            add     a,#0xfc
+0668 F581      1685            mov     sp,a
+066A E4        1686            clr     a
+066B C0E0      1687            push    acc
+066D C0E0      1688            push    acc
+066F 7420      1689            mov     a,#0x20
+0671 C0E0      1690            push    acc
+0673 7442      1691            mov     a,#0x42
+0675 C0E0      1692            push    acc
+0677 8A82      1693            mov     dpl,r2
+0679 8B83      1694            mov     dph,r3
+067B 8CF0      1695            mov     b,r4
+067D ED        1696            mov     a,r5
+067E 120100    1697            lcall   ___fslt
+0681 AA82      1698            mov     r2,dpl
+0683 E581      1699            mov     a,sp
+0685 24FC      1700            add     a,#0xfc
+0687 F581      1701            mov     sp,a
+0689 D001      1702            pop     ar1
+068B D000      1703            pop     ar0
+068D D007      1704            pop     ar7
+068F D006      1705            pop     ar6
+0691 EA        1706            mov     a,r2
+0692 7001      1707            jnz     L014023?
+0694 C006      1708            push    ar6
+0696 C007      1709            push    ar7
+0698 C000      1710            push    ar0
+069A C001      1711            push    ar1
+069C C006      1712            push    ar6
+069E C007      1713            push    ar7
+06A0 C000      1714            push    ar0
+06A2 C001      1715            push    ar1
+06A4 858882    1716            mov     dpl,_main_mem_1_52
+06A7 858983    1717            mov     dph,(_main_mem_1_52 + 1)
+06AA 858AF0    1718            mov     b,(_main_mem_1_52 + 2)
+06AD E58B      1719            mov     a,(_main_mem_1_52 + 3)
+06AF 120100    1720            lcall   ___fssub
+06B2 AA82      1721            mov     r2,dpl
+06B4 AB83      1722            mov     r3,dph
+06B6 ACF0      1723            mov     r4,b
+06B8 FD        1724            mov     r5,a
+06B9 E581      1725            mov     a,sp
+06BB 24FC      1726            add     a,#0xfc
+06BD F581      1727            mov     sp,a
+06BF E4        1728            clr     a
+06C0 C0E0      1729            push    acc
+06C2 C0E0      1730            push    acc
+06C4 7420      1731            mov     a,#0x20
+06C6 C0E0      1732            push    acc
+06C8 7442      1733            mov     a,#0x42
+06CA C0E0      1734            push    acc
+06CC 8A82      1735            mov     dpl,r2
+06CE 8B83      1736            mov     dph,r3
+06D0 8CF0      1737            mov     b,r4
+06D2 ED        1738            mov     a,r5
+06D3 120100    1739            lcall   ___fslt
+06D6 AA82      1740            mov     r2,dpl
+06D8 E581      1741            mov     a,sp
+06DA 24FC      1742            add     a,#0xfc
+06DC F581      1743            mov     sp,a
+06DE D001      1744            pop     ar1
+06E0 D000      1745            pop     ar0
+06E2 D007      1746            pop     ar7
+06E4 D006      1747            pop     ar6
+06E6 EA        1748            mov     a,r2
+06E7 6001      1749            jz      L014024?
+06E9           1750   L014023?:
+06E9           1751   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:321: mem = bpm;
+06E9 8E88      1752            mov     _main_mem_1_52,r6
+06EB 8F89      1753            mov     (_main_mem_1_52 + 1),r7
+06ED 888A      1754            mov     (_main_mem_1_52 + 2),r0
+06EF 898B      1755            mov     (_main_mem_1_52 + 3),r1
+06F1 8001      1756            sjmp    L014025?
+06F3           1757   L014024?:
+06F3           1758   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:323: else bpm = mem;
+06F3 AE88      1759            mov     r6,_main_mem_1_52
+06F5 AF89      1760            mov     r7,(_main_mem_1_52 + 1)
+06F7 A88A      1761            mov     r0,(_main_mem_1_52 + 2)
+06F9 A98B      1762            mov     r1,(_main_mem_1_52 + 3)
+06FB           1763   L014025?:
+06FB           1764   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:327: sum=bpm+mem; 
+06FB C088      1765            push    _main_mem_1_52
+06FD C089      1766            push    (_main_mem_1_52 + 1)
+06FF C08A      1767            push    (_main_mem_1_52 + 2)
+0701 C08B      1768            push    (_main_mem_1_52 + 3)
+0703 8E82      1769            mov     dpl,r6
+0705 8F83      1770            mov     dph,r7
+0707 88F0      1771            mov     b,r0
+0709 E9        1772            mov     a,r1
+070A 120100    1773            lcall   ___fsadd
+070D AA82      1774            mov     r2,dpl
+070F AB83      1775            mov     r3,dph
+0711 ACF0      1776            mov     r4,b
+0713 FD        1777            mov     r5,a
+0714 E581      1778            mov     a,sp
+0716 24FC      1779            add     a,#0xfc
+0718 F581      1780            mov     sp,a
+071A           1781   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:328: bpm=sum/2; 
+071A E4        1782            clr     a
+071B C0E0      1783            push    acc
+071D C0E0      1784            push    acc
+071F C0E0      1785            push    acc
+0721 7440      1786            mov     a,#0x40
+0723 C0E0      1787            push    acc
+0725 8A82      1788            mov     dpl,r2
+0727 8B83      1789            mov     dph,r3
+0729 8CF0      1790            mov     b,r4
+072B ED        1791            mov     a,r5
+072C 120100    1792            lcall   ___fsdiv
+072F AE82      1793            mov     r6,dpl
+0731 AF83      1794            mov     r7,dph
+0733 A8F0      1795            mov     r0,b
+0735 F9        1796            mov     r1,a
+0736 E581      1797            mov     a,sp
+0738 24FC      1798            add     a,#0xfc
+073A F581      1799            mov     sp,a
+073C           1800   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:330: bpm_int = (int) bpm;
+073C 8E82      1801            mov     dpl,r6
+073E 8F83      1802            mov     dph,r7
+0740 88F0      1803            mov     b,r0
+0742 E9        1804            mov     a,r1
+0743 120100    1805            lcall   ___fs2sint
+0746 AA82      1806            mov     r2,dpl
+0748 AB83      1807            mov     r3,dph
+074A           1808   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:331: printf( "\rperiod=%fs    heart rate=%dbpm     %s" , period, bpm_int,bpm_string);
+074A C002      1809            push    ar2
+074C C003      1810            push    ar3
+074E C078      1811            push    _main_bpm_string_1_52
+0750 C079      1812            push    (_main_bpm_string_1_52 + 1)
+0752 C07A      1813            push    (_main_bpm_string_1_52 + 2)
+0754 C002      1814            push    ar2
+0756 C003      1815            push    ar3
+0758 C048      1816            push    _main_period_1_52
+075A C049      1817            push    (_main_period_1_52 + 1)
+075C C04A      1818            push    (_main_period_1_52 + 2)
+075E C04B      1819            push    (_main_period_1_52 + 3)
+0760 7400      1820            mov     a,#__str_10
+0762 C0E0      1821            push    acc
+0764 74CB      1822            mov     a,#(__str_10 >> 8)
+0766 C0E0      1823            push    acc
+0768 7480      1824            mov     a,#0x80
+076A C0E0      1825            push    acc
+076C 120100    1826            lcall   _printf
+076F E581      1827            mov     a,sp
+0771 24F4      1828            add     a,#0xf4
+0773 F581      1829            mov     sp,a
+0775 D003      1830            pop     ar3
+0777 D002      1831            pop     ar2
+0779           1832   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:335: while(bpm_int)
+0779 E4        1833            clr     a
+077A F528      1834            mov     _main_count_1_52,a
+077C F529      1835            mov     (_main_count_1_52 + 1),a
+077E           1836   L014029?:
+077E EA        1837            mov     a,r2
+077F 4B        1838            orl     a,r3
+0780 6001      1839            jz      L014031?
+0782           1840   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:337: bpm_string[count] = 48+bpm_int%10;
+0782 E528      1841            mov     a,_main_count_1_52
+0784 2578      1842            add     a,_main_bpm_string_1_52
+0786 FE        1843            mov     r6,a
+0787 E529      1844            mov     a,(_main_count_1_52 + 1)
+0789 3579      1845            addc    a,(_main_bpm_string_1_52 + 1)
+078B FF        1846            mov     r7,a
+078C A87A      1847            mov     r0,(_main_bpm_string_1_52 + 2)
+078E 75000A    1848            mov     __modsint_PARM_2,#0x0A
+0791 E4        1849            clr     a
+0792 F501      1850            mov     (__modsint_PARM_2 + 1),a
+0794 8A82      1851            mov     dpl,r2
+0796 8B83      1852            mov     dph,r3
+0798 C002      1853            push    ar2
+079A C003      1854            push    ar3
+079C C006      1855            push    ar6
+079E C007      1856            push    ar7
+07A0 C000      1857            push    ar0
+07A2 120100    1858            lcall   __modsint
+07A5 A982      1859            mov     r1,dpl
+07A7 D000      1860            pop     ar0
+07A9 D007      1861            pop     ar7
+07AB D006      1862            pop     ar6
+07AD D003      1863            pop     ar3
+07AF D002      1864            pop     ar2
+07B1 7430      1865            mov     a,#0x30
+07B3 29        1866            add     a,r1
+07B4 8E82      1867            mov     dpl,r6
+07B6 8F83      1868            mov     dph,r7
+07B8 88F0      1869            mov     b,r0
+07BA 120100    1870            lcall   __gptrput
+07BD           1871   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:338: bpm_int /= 10;
+07BD 75000A    1872            mov     __divsint_PARM_2,#0x0A
+07C0 E4        1873            clr     a
+07C1 F501      1874            mov     (__divsint_PARM_2 + 1),a
+07C3 8A82      1875            mov     dpl,r2
+07C5 8B83      1876            mov     dph,r3
+07C7 120100    1877            lcall   __divsint
+07CA AA82      1878            mov     r2,dpl
+07CC AB83      1879            mov     r3,dph
+07CE           1880   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:339: count++;
+07CE 0528      1881            inc     _main_count_1_52
+07D0 E4        1882            clr     a
+07D1 B52840    1883            cjne    a,_main_count_1_52,L014029?
+07D4 0529      1884            inc     (_main_count_1_52 + 1)
+07D6 8001      1885            sjmp    L014029?
+07D8           1886   L014031?:
+07D8           1887   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:341: bpm_string[count]='\0';
+07D8 E528      1888            mov     a,_main_count_1_52
+07DA 2578      1889            add     a,_main_bpm_string_1_52
+07DC FA        1890            mov     r2,a
+07DD E529      1891            mov     a,(_main_count_1_52 + 1)
+07DF 3579      1892            addc    a,(_main_bpm_string_1_52 + 1)
+07E1 FB        1893            mov     r3,a
+07E2 AC7A      1894            mov     r4,(_main_bpm_string_1_52 + 2)
+07E4 8A82      1895            mov     dpl,r2
+07E6 8B83      1896            mov     dph,r3
+07E8 8CF0      1897            mov     b,r4
+07EA E4        1898            clr     a
+07EB 120100    1899            lcall   __gptrput
+07EE           1900   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:342: LCDprint("BPM:", 1, 1);
+07EE 75D001    1901            mov     _LCDprint_PARM_2,#0x01
+07F1 D2F0      1902            setb    _LCDprint_PARM_3
+07F3 90CCE0    1903            mov     dptr,#__str_11
+07F6 75F080    1904            mov     b,#0x80
+07F9 120100    1905            lcall   _LCDprint
+07FC           1906   ;        C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:345: LCDprint_inv(bpm_string, 2, 1);
+07FC 758002    1907            mov     _LCDprint_inv_PARM_2,#0x02
+07FF D2A0      1908            setb    _LCDprint_inv_PARM_3
+0801 857882    1909            mov     dpl,_main_bpm_string_1_52
+0804 857983    1910            mov     dph,(_main_bpm_string_1_52 + 1)
+0807 857AF0    1911            mov     b,(_main_bpm_string_1_52 + 2)
+080A 120100    1912            lcall   _LCDprint_inv
+080D 020100    1913            ljmp    L014033?
+0810           1914            rseg R_CSEG
+0810           1915   
+0000           1916            rseg R_XINIT
+0000           1917   
+0000           1918            rseg R_CONST
+0000           1919   __str_0:
+0000 506C6163  1920            db 'Place clip on   '
      6520636C
      6970206F
      6E202020
-0010 00        1878            db 0x00
-0011           1879   __str_1:
-0011 52696E67  1880            db 'Ring fingernail'
+0010 00        1921            db 0x00
+0011           1922   __str_1:
+0011 52696E67  1923            db 'Ring fingernail'
      2066696E
      6765726E
      61696C
-0020 00        1881            db 0x00
-0021           1882   __str_2:
-0021 1B        1883            db 0x1B
-0022 5B324A    1884            db '[2J'
-0025 00        1885            db 0x00
-0026           1886   __str_3:
-0026 45464D38  1887            db 'EFM8 Period measurement at pin P2.0 using Timer 0.'
+0020 00        1924            db 0x00
+0021           1925   __str_2:
+0021 1B        1926            db 0x1B
+0022 5B324A    1927            db '[2J'
+0025 00        1928            db 0x00
+0026           1929   __str_3:
+0026 45464D38  1930            db 'EFM8 Period measurement at pin P2.0 using Timer 0.'
      20506572
      696F6420
      6D656173
@@ -1903,80 +1946,80 @@
      67205469
      6D657220
      302E
-0058 0A        1888            db 0x0A
-0059 46696C65  1889            db 'File: %s'
+0058 0A        1931            db 0x0A
+0059 46696C65  1932            db 'File: %s'
      3A202573
-0061 0A        1890            db 0x0A
-0062 436F6D70  1891            db 'Compiled: %s, %s'
+0061 0A        1933            db 0x0A
+0062 436F6D70  1934            db 'Compiled: %s, %s'
      696C6564
      3A202573
      2C202573
-0072 0A        1892            db 0x0A
-0073 0A        1893            db 0x0A
-0074 00        1894            db 0x00
-0075           1895   __str_4:
-0075 433A      1896            db 'C:'
-0077 5C        1897            db 0x5C
-0078 55736572  1898            db 'Users'
+0072 0A        1935            db 0x0A
+0073 0A        1936            db 0x0A
+0074 00        1937            db 0x00
+0075           1938   __str_4:
+0075 433A      1939            db 'C:'
+0077 5C        1940            db 0x5C
+0078 55736572  1941            db 'Users'
      73
-007D 5C        1899            db 0x5C
-007E 63617273  1900            db 'carso'
+007D 5C        1942            db 0x5C
+007E 63617273  1943            db 'carso'
      6F
-0083 5C        1901            db 0x5C
-0084 446F6375  1902            db 'Documents'
+0083 5C        1944            db 0x5C
+0084 446F6375  1945            db 'Documents'
      6D656E74
      73
-008D 5C        1903            db 0x5C
-008E 312E2053  1904            db '1. School'
+008D 5C        1946            db 0x5C
+008E 312E2053  1947            db '1. School'
      63686F6F
      6C
-0097 5C        1905            db 0x5C
-0098 302E2053  1906            db '0. Spring 2018'
+0097 5C        1948            db 0x5C
+0098 302E2053  1949            db '0. Spring 2018'
      7072696E
      67203230
      3138
-00A6 5C        1907            db 0x5C
-00A7 456C6563  1908            db 'Elec 292'
+00A6 5C        1950            db 0x5C
+00A7 456C6563  1951            db 'Elec 292'
      20323932
-00AF 5C        1909            db 0x5C
-00B0 6C        1910            db 'l'
-00B1 616234    1911            db 'ab4'
-00B4 5C        1912            db 0x5C
-00B5 68725F6D  1913            db 'hr_monitor.c'
+00AF 5C        1952            db 0x5C
+00B0 6C        1953            db 'l'
+00B1 616234    1954            db 'ab4'
+00B4 5C        1955            db 0x5C
+00B5 68725F6D  1956            db 'hr_monitor.c'
      6F6E6974
      6F722E63
-00C1 00        1914            db 0x00
-00C2           1915   __str_5:
-00C2 46656220  1916            db 'Feb 28 2018'
-     32382032
+00C1 00        1957            db 0x00
+00C2           1958   __str_5:
+00C2 4D617220  1959            db 'Mar  1 2018'
+     20312032
      303138
-00CD 00        1917            db 0x00
-00CE           1918   __str_6:
-00CE 32303A32  1919            db '20:27:42'
-     373A3432
-00D6 00        1920            db 0x00
-00D7           1921   __str_7:
-00D7 0D        1922            db 0x0D
-00D8 543D2566  1923            db 'T=%f ms    '
+00CD 00        1960            db 0x00
+00CE           1961   __str_6:
+00CE 31303A34  1962            db '10:42:18'
+     323A3138
+00D6 00        1963            db 0x00
+00D7           1964   __str_7:
+00D7 0D        1965            db 0x0D
+00D8 543D2566  1966            db 'T=%f ms    '
      206D7320
      202020
-00E3 00        1924            db 0x00
-00E4           1925   __str_8:
-00E4 0D        1926            db 0x0D
-00E5 4E6F7420  1927            db 'Not stable yet'
+00E3 00        1967            db 0x00
+00E4           1968   __str_8:
+00E4 0D        1969            db 0x0D
+00E5 4E6F7420  1970            db 'Not stable yet'
      73746162
      6C652079
      6574
-00F3 00        1928            db 0x00
-00F4           1929   __str_9:
-00F4 4852204E  1930            db 'HR Not Stable'
+00F3 00        1971            db 0x00
+00F4           1972   __str_9:
+00F4 4852204E  1973            db 'HR Not Stable'
      6F742053
      7461626C
      65
-0101 00        1931            db 0x00
-0102           1932   __str_10:
-0102 0D        1933            db 0x0D
-0103 70657269  1934            db 'period=%fs    heart rate=%dbpm'
+0101 00        1974            db 0x00
+0102           1975   __str_10:
+0102 0D        1976            db 0x0D
+0103 70657269  1977            db 'period=%fs    heart rate=%dbpm'
      6F643D25
      66732020
      20206865
@@ -1984,10 +2027,13 @@
      72617465
      3D256462
      706D
-0121 09        1935            db 0x09
-0122 2573      1936            db '%s'
-0124 00        1937            db 0x00
-0125           1938   
-0003           1939            CSEG
-0003           1940   
-0003           1941   end
+0121 09        1978            db 0x09
+0122 2573      1979            db '%s'
+0124 00        1980            db 0x00
+0125           1981   __str_11:
+0125 42504D3A  1982            db 'BPM:'
+0129 00        1983            db 0x00
+012A           1984   
+0003           1985            CSEG
+0003           1986   
+0003           1987   end

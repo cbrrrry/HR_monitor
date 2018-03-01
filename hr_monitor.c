@@ -245,7 +245,7 @@ void main (void)
 	int unstable=0;
 	int bpm_int=0;
 	int count=0;
-	
+	float sum=0.0;
 	char * bpm_string=NULL;
 
 	//Initialize Timer0 to be used to count the period
@@ -308,7 +308,7 @@ void main (void)
 
 		if(!unstable)
 			{
-				if(bpm >= 50 && bpm <= 130) 
+				if(bpm >= 40 && bpm <= 180) 
 					{mem = bpm; unstable=1;}
 
 				else {printf("\rNot stable yet"); 
@@ -316,13 +316,17 @@ void main (void)
 			} 
 
 			//filters out errant HR measurements to smooth out signal. 
-		if(bpm >= 50 && bpm <= 130 && ((bpm-mem) < 40 || (mem-bpm) < 40))
+		if(bpm >= 40 && bpm <= 180 && ((bpm-mem) < 40 || (mem-bpm) < 40))
 				{
 					mem = bpm;
 				}
 			else bpm = mem;
 		
 		// Send the period to the serial port
+		//Averages current and last bpm measurement
+			sum=bpm+mem; 
+			bpm=sum/2; 
+
 		bpm_int = (int) bpm;
 		printf( "\rperiod=%fs    heart rate=%dbpm	%s" , period, bpm_int,bpm_string);
 		count = 0;	
@@ -335,7 +339,9 @@ void main (void)
 			count++;
 		}
 		bpm_string[count]='\0';
-		
+				LCDprint("BPM:", 1, 1);
+				
+				
 				LCDprint_inv(bpm_string, 2, 1);
 
     

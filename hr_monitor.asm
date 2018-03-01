@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by C51
 ; Version 1.0.0 #1069 (Apr 23 2015) (MSVC)
-; This file was generated Wed Feb 28 20:27:42 2018
+; This file was generated Thu Mar 01 10:42:18 2018
 ;--------------------------------------------------------
 $name hr_monitor
 $optc51 --model-small
@@ -1233,6 +1233,7 @@ _TIMER0_Init:
 ;unstable                  Allocated with name '_main_unstable_1_52'
 ;bpm_int                   Allocated to registers r2 r3 
 ;count                     Allocated with name '_main_count_1_52'
+;sum                       Allocated to registers r2 r3 r4 r5 
 ;bpm_string                Allocated with name '_main_bpm_string_1_52'
 ;------------------------------------------------------------
 ;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:238: void main (void) 
@@ -1523,7 +1524,7 @@ L014016?:
 	jz	L014062?
 	ljmp	L014022?
 L014062?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:311: if(bpm >= 50 && bpm <= 130) 
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:311: if(bpm >= 40 && bpm <= 180) 
 	push	ar6
 	push	ar7
 	push	ar0
@@ -1531,7 +1532,7 @@ L014062?:
 	clr	a
 	push	acc
 	push	acc
-	mov	a,#0x48
+	mov	a,#0x20
 	push	acc
 	mov	a,#0x42
 	push	acc
@@ -1557,7 +1558,7 @@ L014062?:
 	clr	a
 	push	acc
 	push	acc
-	mov	a,#0x02
+	mov	a,#0x34
 	push	acc
 	mov	a,#0x43
 	push	acc
@@ -1605,7 +1606,7 @@ L014018?:
 	lcall	_LCDprint
 	ljmp	L014033?
 L014022?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:319: if(bpm >= 50 && bpm <= 130 && ((bpm-mem) < 40 || (mem-bpm) < 40))
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:319: if(bpm >= 40 && bpm <= 180 && ((bpm-mem) < 40 || (mem-bpm) < 40))
 	push	ar6
 	push	ar7
 	push	ar0
@@ -1613,7 +1614,7 @@ L014022?:
 	clr	a
 	push	acc
 	push	acc
-	mov	a,#0x48
+	mov	a,#0x20
 	push	acc
 	mov	a,#0x42
 	push	acc
@@ -1641,7 +1642,7 @@ L014065?:
 	clr	a
 	push	acc
 	push	acc
-	mov	a,#0x02
+	mov	a,#0x34
 	push	acc
 	mov	a,#0x43
 	push	acc
@@ -1760,7 +1761,43 @@ L014024?:
 	mov	r0,(_main_mem_1_52 + 2)
 	mov	r1,(_main_mem_1_52 + 3)
 L014025?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:326: bpm_int = (int) bpm;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:327: sum=bpm+mem; 
+	push	_main_mem_1_52
+	push	(_main_mem_1_52 + 1)
+	push	(_main_mem_1_52 + 2)
+	push	(_main_mem_1_52 + 3)
+	mov	dpl,r6
+	mov	dph,r7
+	mov	b,r0
+	mov	a,r1
+	lcall	___fsadd
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:328: bpm=sum/2; 
+	clr	a
+	push	acc
+	push	acc
+	push	acc
+	mov	a,#0x40
+	push	acc
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
+	lcall	___fsdiv
+	mov	r6,dpl
+	mov	r7,dph
+	mov	r0,b
+	mov	r1,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:330: bpm_int = (int) bpm;
 	mov	dpl,r6
 	mov	dph,r7
 	mov	b,r0
@@ -1768,7 +1805,7 @@ L014025?:
 	lcall	___fs2sint
 	mov	r2,dpl
 	mov	r3,dph
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:327: printf( "\rperiod=%fs    heart rate=%dbpm	%s" , period, bpm_int,bpm_string);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:331: printf( "\rperiod=%fs    heart rate=%dbpm	%s" , period, bpm_int,bpm_string);
 	push	ar2
 	push	ar3
 	push	_main_bpm_string_1_52
@@ -1792,7 +1829,7 @@ L014025?:
 	mov	sp,a
 	pop	ar3
 	pop	ar2
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:331: while(bpm_int)
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:335: while(bpm_int)
 	clr	a
 	mov	_main_count_1_52,a
 	mov	(_main_count_1_52 + 1),a
@@ -1800,7 +1837,7 @@ L014029?:
 	mov	a,r2
 	orl	a,r3
 	jz	L014031?
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:333: bpm_string[count] = 48+bpm_int%10;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:337: bpm_string[count] = 48+bpm_int%10;
 	mov	a,_main_count_1_52
 	add	a,_main_bpm_string_1_52
 	mov	r6,a
@@ -1831,7 +1868,7 @@ L014029?:
 	mov	dph,r7
 	mov	b,r0
 	lcall	__gptrput
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:334: bpm_int /= 10;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:338: bpm_int /= 10;
 	mov	__divsint_PARM_2,#0x0A
 	clr	a
 	mov	(__divsint_PARM_2 + 1),a
@@ -1840,14 +1877,14 @@ L014029?:
 	lcall	__divsint
 	mov	r2,dpl
 	mov	r3,dph
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:335: count++;
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:339: count++;
 	inc	_main_count_1_52
 	clr	a
 	cjne	a,_main_count_1_52,L014029?
 	inc	(_main_count_1_52 + 1)
 	sjmp	L014029?
 L014031?:
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:337: bpm_string[count]='\0';
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:341: bpm_string[count]='\0';
 	mov	a,_main_count_1_52
 	add	a,_main_bpm_string_1_52
 	mov	r2,a
@@ -1860,7 +1897,13 @@ L014031?:
 	mov	b,r4
 	clr	a
 	lcall	__gptrput
-;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:339: LCDprint_inv(bpm_string, 2, 1);
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:342: LCDprint("BPM:", 1, 1);
+	mov	_LCDprint_PARM_2,#0x01
+	setb	_LCDprint_PARM_3
+	mov	dptr,#__str_11
+	mov	b,#0x80
+	lcall	_LCDprint
+;	C:\Users\carso\Documents\1. School\0. Spring 2018\Elec 292\lab4\hr_monitor.c:345: LCDprint_inv(bpm_string, 2, 1);
 	mov	_LCDprint_inv_PARM_2,#0x02
 	setb	_LCDprint_inv_PARM_3
 	mov	dpl,_main_bpm_string_1_52
@@ -1913,10 +1956,10 @@ __str_4:
 	db 'hr_monitor.c'
 	db 0x00
 __str_5:
-	db 'Feb 28 2018'
+	db 'Mar  1 2018'
 	db 0x00
 __str_6:
-	db '20:27:42'
+	db '10:42:18'
 	db 0x00
 __str_7:
 	db 0x0D
@@ -1934,6 +1977,9 @@ __str_10:
 	db 'period=%fs    heart rate=%dbpm'
 	db 0x09
 	db '%s'
+	db 0x00
+__str_11:
+	db 'BPM:'
 	db 0x00
 
 	CSEG
